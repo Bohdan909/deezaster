@@ -1,0 +1,85 @@
+
+/* --------------------
+    Navigation
+    ------------------- */   
+
+.navigation {
+    @include socket;
+    @include transform(translateX(-50%));
+    @extend .trans;
+    position: fixed;
+    bottom: 3.5vh;
+    padding: 0 3.5%;
+    left: 50%;
+    height: auto;
+    z-index: 900;
+    overflow: hidden;
+    opacity: 0;
+
+    @include tablet {
+        @include transform(translateX(0));
+        left: 30px;
+        right: 30px;
+    }
+
+    @include mobile {
+        display: none;
+    }
+
+    &:after {
+        @include color-w(0.2);
+        content: "........................................................................................................................";
+        display: block;
+        position: absolute;
+        top: -12px;
+        left: -13px;
+        font-size: 28px;
+        letter-spacing: 2.9px;
+        text-align: center;
+    }
+
+    &.loaded { // LOADED
+        opacity: 1;
+    }
+
+    ul {
+        @include flex(space-between);        
+        
+        li {
+            @extend .trans;
+            @include color-w(0.4);
+            position: relative;
+            z-index: 1;
+            padding-top: 38px;
+            font-size: 13px;
+            cursor: pointer;
+            width: 20px;
+            text-align: center;
+            font-family: $fontBold;
+
+            &:hover {
+                @include color-w(0.85);
+            }
+
+            &.active {
+                @include color-w(0.85);
+                
+                &:before {
+                    @include transform(scale(1));
+                }
+            }
+
+            &:before {
+                @extend .ps;
+                @include transition(all, 0.4s, ease);
+                @include border-rad(50%);
+                @include transform(scale(0.45));
+                transform-origin: center center;
+
+                width: 19px; 
+                height: 19px;
+                background-color: #fff;
+            }
+        }
+    }
+}

@@ -1,0 +1,183 @@
+
+
+
+.game-demo {
+    @include clearfix;
+    width: 510px;
+
+    .game-demo-viewport {
+        height: 360px;
+        overflow: hidden;
+    }
+
+    .cube {
+        @include transition(all, 0.6s, ease-out);
+        position: relative;
+        top: -240px;
+        float: left;
+        width: 20%;
+        height: 120px;
+        opacity: 0.3;
+        background-repeat: no-repeat;
+
+        animation-fill-mode: forwards;
+        -ms-animation-fill-mode: forwards;
+        -webkit-animation-fill-mode: forwards;
+
+        &.alight {
+            opacity: 1;
+        }
+
+        &.wanted {
+            cursor: pointer;
+        }
+    }
+
+    .cube-1 {
+        @include sp(1px,0);
+    }
+
+    .cube-2 {
+        @include sp(-102px,0);
+    }
+
+    .cube-3 {
+        @include sp(-204px,0);
+    }
+
+    .cube-4 {
+        @include sp(-306px,0);
+    }
+
+    .cube-5 {
+        @include sp(-407px,0);
+    }
+
+    .cube-6 {
+        @include sp(-510px,0);
+    }
+}
+
+.animate {
+
+    .cube-animate-1, .cube-animate-9, .cube-animate-10, .cube-animate-11 {
+        animation-name: moveDown, moveDown2;
+        animation-duration: 0.6s, 0.6s;
+        animation-delay: 0.25s, 1.8s;
+    }
+
+    .cube-animate-2 {
+        animation-name: moveDown, moveAndHide;
+        animation-duration: 0.6s, 0.4s;
+        animation-delay: 0.15s, 1.2s;
+    }
+
+    .cube-animate-3, .cube-animate-4 {
+        animation-name: light, hide;
+        animation-duration: 0.5s, 0.4s;
+        animation-delay: 0.65s, 1.35s;
+    }
+
+    .cube-animate-4 {
+        animation-delay: 0.65s, 1.40s;
+    }
+
+    .cube-animate-5 {
+        animation-name: moveDown;
+        animation-duration: 0.35s;
+        animation-delay: 0s;
+    }
+
+    .cube-animate-6 {
+        animation-name: moveDown;
+        animation-duration: 0.6s;
+        animation-delay: 0.15s;
+    }
+
+    .cube-animate-7, .cube-animate-8 {
+        animation-name: moveDown;
+        animation-duration: 0.6s;
+        animation-delay: 1.85s;
+    }
+
+    .cube-animate-8 {
+        animation-delay: 1.95s;
+    }
+
+    .cube-animate-9 {
+        animation-delay: 1.6s, 2.00s;
+    }
+
+    .cube-animate-10 {
+        animation-delay: 1.6s, 2.05s;
+    }
+
+    .cube-animate-11 {
+        animation-delay: 1.6s, 2.10s;
+    }
+}
+
+
+
+
+@keyframes moveDown {
+    to {
+        @include transform(translateY(120px));
+    }
+}
+
+@-webkit-keyframes moveDown {
+    to {
+        @include transform(translateY(120px));
+    }
+}
+
+@keyframes moveDown2 {
+    from {
+        @include transform(translateY(120px));
+    }
+    to {
+        @include transform(translateY(240px));
+    }
+}
+
+@-webkit-keyframes moveDown2 {
+    to {
+        @include transform(translateY(240px));
+    }
+}
+
+@keyframes hide {
+    to {
+        @include transform(scale(0));
+    }
+}
+
+@-webkit-keyframes hide {
+    to {
+        @include transform(scale(0));
+    }
+}
+
+@keyframes light {
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes light {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes moveAndHide {
+    from {
+        @include transform(translateY(120px) scale(1));
+    }
+    to {
+        @include transform(translateY(120px) scale(0));
+    }
+}
+
+

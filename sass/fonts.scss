@@ -1,0 +1,104 @@
+/* =========================
+   Fonts
+   =========================*/
+
+body { 
+    font: $fontMain 14px Arial, Helvetica; 
+    color:#fff; 
+    letter-spacing: 0.2px; 
+    background:#fff; 
+    line-height: 1; 
+    -ms-overflow-style: scrollbar; 
+}
+
+body * { -webkit-font-smoothing: antialiased; text-shadow: 0 1px 0 rgba(0,0,0,0.01); }
+
+
+.title {
+    font-size: 45px;
+    line-height: 52px;
+    font-family: $fontBold;
+    margin-bottom: 15px;
+
+    @include mid {
+        font-size: 40px;
+    }
+
+    @include tablet-only {
+        font-size: 35px;
+    }
+
+    @include mobile {
+        font-size: 45px;
+
+        @include land {
+            font-size: 25px;
+            line-height: 30px;
+            margin-bottom: 7px;
+        }
+    }
+
+    @include mobile-min {
+        font-size: 30px;
+        line-height: 35px;
+    }
+}
+
+a {
+    color: #000;
+    
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+p {
+    margin-bottom: 25px;
+    line-height: 30px;
+    font-family: $fontMain;
+
+    @include mobile {
+
+        @include land {
+            font-size: 12px;
+            line-height: 20px;
+            margin-bottom: 12px;
+        }
+    }
+
+    @include mobile-min {
+        font-size: 12px;
+        line-height: 25px;
+    }
+}
+
+
+@font-face {
+    font-family: "VarelaRound-Regular";
+    src: url("fonts/VarelaRound-Regular.eot");
+    src: url("fonts/VarelaRound-Regular.eot?#iefix") format("embedded-opentype"),
+         url("fonts/VarelaRound-Regular.woff") format("woff"),
+         url("fonts/VarelaRound-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "BlocExtCondC";
+    src: url("fonts/BlocExtCondC.eot");
+    src: url("fonts/BlocExtCondC.eot?#iefix") format("embedded-opentype"),
+         url("fonts/BlocExtCondC.woff") format("woff"),
+         url("fonts/BlocExtCondC.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "ArchitectsDaughter-Regular";
+    src: url("fonts/ArchitectsDaughter-Regular.eot");
+    src: url("fonts/ArchitectsDaughter-Regular.eot?#iefix") format("embedded-opentype"),
+         url("fonts/ArchitectsDaughter-Regular.woff") format("woff"),
+         url("fonts/ArchitectsDaughter-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,0 +1,180 @@
+
+/* --------------------
+    Section Top
+    ------------------- */  
+
+.section-2 {
+    background-image: url(../images/section-2.jpg);
+    background-position: 50% 100%;
+
+    @include tablet {
+        background-position: -410px 100%;
+
+        @include port {
+            background-size: auto 100%;
+        }
+    }
+
+    @include mobile {
+        background-size: 1750px auto;
+        background-position: -320px 100%;
+
+        @include land {
+            background-size: 1200px auto !important;
+            background-position: -225px 100% !important;
+        }
+    }
+
+    @media (max-width: 580px){
+        background-size: 1500px auto;
+        background-position: -320px -80px;
+    }
+
+    .person {
+        @include transition(opacity, 0.5s, linear);
+        @include delay(0.4s);
+        opacity: 0;
+        left: -118px;
+        bottom: 155px; 
+
+        @media screen and (min-width: 1281px) and (max-height: 700px){
+            width: 370px;
+            left: -70px;
+            bottom: 100px;
+        }
+
+        @media screen and (min-width: 1281px) and (max-height: 580px){
+            width: 300px;
+            left: -15px;
+            bottom: 80px;
+        }
+
+        @include mid {
+            width: 350px;
+            left: -160px;
+
+            @media screen and (min-width: 1025px) and (max-height: 700px){
+                bottom: 120px;
+            }
+
+            @media screen and (min-width: 1025px) and (max-height: 580px){
+                width: 280px;
+                left: -100px;
+            }
+
+            @media screen and (min-width: 1025px) and (max-height: 480px){
+                bottom: 80px;
+            }
+        }     
+
+        @include tablet {
+            left: -98px;
+        }
+
+        @media (max-width: 1024px) and (min-width: 1023px) and (orientation: portrait) {
+            left: 45px;
+        }
+
+        @include mobile {
+            width: 330px;
+            bottom: 155px;
+            left: -80px;
+
+            @include land {
+                width: 200px !important;
+                left: -40px !important;
+                bottom: 75px !important;
+                top: auto !important;
+            }
+        }
+
+        @media (max-width: 580px){
+            width: 230px;
+            left: -70px;
+            top: 310px;
+            bottom: auto;
+        }
+
+        @include mobile-min {
+            top: 250px;
+        }
+
+    } // END PERSON
+
+    .text-block {
+        @include vertCenter;
+        position: absolute;
+        width: 365px;
+        left: 450px;
+
+        @include mid {
+            left: 300px;
+            top: 55%;
+
+            @media screen and (min-width: 1025px) and (max-height: 580px){
+                top: 50%;
+            }
+        }
+
+        @include tablet {
+
+            @include port {
+                left: 450px;
+            }
+        }
+
+        @include mobile {
+            @include transform(translateY(0px));
+            top: 38px;
+            width: 330px;
+            left: auto !important;
+            right: 35px;
+
+            .title {
+                margin-right: 0;
+            }
+
+            .btn-circle {
+                left: 195px;
+            }
+
+            @include land {
+
+                .btn-circle {
+                    top: -33px;
+                }
+            }
+        }
+
+        @media (max-width: 580px){
+            left: 0 !important;
+            right: auto;
+
+            @include land {
+                width: 280px;
+                right: 35px;
+                left: auto !important;
+            }
+        }
+
+        @include mobile-min {
+            width: 280px;
+
+            .btn-circle {
+                left: 167px;
+            }
+        }
+
+    } // END TEXT BLOCK
+
+    .btn-circle {
+        color: #3e4109;
+    }
+
+    &.active, &.prev { // LOADED
+        
+        .person {
+            opacity: 1;
+        }
+    }
+}

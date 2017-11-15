@@ -1,0 +1,195 @@
+
+/* --------------------
+    Section Top
+    ------------------- */  
+
+.section-top {
+    background-image: url(../images/section-1.jpg);
+    background-color: #bf9b7d;
+    background-position: 50% 100%;
+    background-size: cover;
+
+    @include tablet {
+        background-size: auto;
+        background-image: -moz-linear-gradient( 16deg, rgb(180,157,133) 0%, rgb(183,144,101) 100%);
+        background-image: -webkit-linear-gradient( 16deg, rgb(180,157,133) 0%, rgb(183,144,101) 100%);
+        background-image: -ms-linear-gradient( 16deg, rgb(180,157,133) 0%, rgb(183,144,101) 100%);
+    }
+    
+    .logo {
+        @extend .trans;
+        position: absolute;
+        left: 0;
+        top: 60px;
+        opacity: 0;
+
+        img {
+            width: 100%;
+        }
+
+        @include mid {
+            top: 30px;
+        }
+    }
+
+    .person { 
+        @include transition(all, 0.7s, ease-out);
+        @include transform(scaleX(0.95) translateX(30px));
+        left: 130px;
+        height: 93vh;
+        min-height: 480px;
+        top: 3vh;
+
+        @include mid {
+            height: 80vh;   
+            top: 10vh;     
+            left: calc(5vh + 2%);
+            left: -webkit-calc(5vh + 2%);
+
+            @media screen and (max-height: 790px){
+                left: calc(5vh + 5%);
+                left: -webkit-calc(5vh + 5%);
+            }   
+
+            @media screen and (max-height: 700px){
+                left: calc(5vh + 8%);
+                left: -webkit-calc(5vh + 8%);
+            }  
+
+            @media screen and (max-height: 600px){
+                left: 140px;
+            }  
+        }
+
+        @include tablet-only {
+            width: 48vw;
+            left: 7vw;
+            top: 15vh;
+            height: auto;
+
+            @include port {
+                width: 53vw;
+                left: 3vw;
+            }
+
+            @media (max-width: 900px){
+                left: 3vw;
+                top: 25vh;
+            }
+        }
+    }
+
+    .text-block {
+        @include transition(all, 0.7s, ease-out);
+        @include transform(translateX(30px));
+        @include delay(0.15s);
+        width: 480px;
+        top: 30%;
+        right: -25px;
+
+        @include mid {
+            width: 440px;
+            right: 15px;
+
+            @media screen and (max-height: 700px){
+                top: 25%;
+                right: 30px;
+            } 
+        }
+
+        @include tablet-only {
+            width: 40vw;
+            right: 20px;
+
+            @media (max-width: 900px){
+                width: 35vw;
+            }
+        }
+    }
+
+    .btn-circle {
+        color: #b57c46;
+    }
+
+    &.loaded { // LOADED
+
+        .logo {
+            opacity: 1;
+        }
+        
+        .text-block {
+            @include transform(translateX(0));
+        }
+
+        .person { 
+            @include transform(scaleX(1) translateX(0));
+        }
+    }
+}
+
+// MOBILE
+@include mobile {
+
+    .section-top {
+    
+        .logo {
+            top: 15px;
+            width: 136px;
+        }
+
+        .person {
+            width: 450px;
+            top: 330px;
+            left: 90px;
+            height: auto;
+            min-height: auto;
+
+            @media (max-width: 500px){
+                width: 370px;
+                left: 45px;
+            }
+
+            @include mobile-min {
+                width: 300px;
+            }
+        }
+
+        .text-block {
+            width: 350px;
+            top: 120px;
+            height: calc(100vh - 120px);
+            height: -webkit-calc(100vh - 120px);
+            
+            p {
+                margin-bottom: 160px;
+            }
+
+            @include mobile-min {
+                width: 290px;
+
+                .btn-circle {
+                    position: absolute;
+                    bottom: 25px;
+                }
+            }
+        }
+
+        @include land { // LANDSCAPE
+            
+            .person {
+                right: -10vw;
+                top: 5vh;
+                width: 55vw;
+                left: auto;
+            }
+
+            .text-block {
+                width: 45vw;
+
+                .btn-circle {
+                    display: none;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,37 @@
+
+/* --------------------
+    Final
+    ------------------- */  
+
+.section-final {
+    height: auto;
+}
+
+.map {
+    height: 2210px;
+    background-image: url(../images/map.png);
+    background-color: #dfd590;
+    background-position: 50% 0;
+}
+
+.footer {
+    height: 100vh;
+    background-color: #dfd590;
+}
+
+.page-pagination a {
+    text-decoration: none;
+    text-indent: -40px;
+    line-height: 8px;
+}
+
+.monet {
+    position: absolute;
+    top: 200px;
+    left: 600px;
+    width: 50px;
+    height: 50px;
+    border: 3px solid #000;
+    cursor: pointer;
+}
+
