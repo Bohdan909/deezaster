@@ -91,7 +91,7 @@
         @media (max-width: 580px){
             width: 230px;
             left: -70px;
-            top: 310px;
+            top: 335px;
             bottom: auto;
         }
 
@@ -104,7 +104,7 @@
     .text-block {
         @include vertCenter;
         position: absolute;
-        width: 365px;
+        width: 425px;
         left: 450px;
 
         @include mid {
@@ -119,14 +119,15 @@
         @include tablet {
 
             @include port {
-                left: 450px;
+                right: 0px;
+                left: auto;
             }
         }
 
         @include mobile {
             @include transform(translateY(0px));
             top: 38px;
-            width: 330px;
+            width: auto;
             left: auto !important;
             right: 35px;
 
@@ -139,6 +140,7 @@
             }
 
             @include land {
+                width: 50%;
 
                 .btn-circle {
                     top: -33px;

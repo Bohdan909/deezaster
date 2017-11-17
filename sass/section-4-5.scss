@@ -457,6 +457,10 @@ $tabDur: 0.5s;
             margin: 0;
         }
 
+        .demo-tab {
+            @include transform(translateY(0));
+        }
+
         @include port {
             padding-top: 50px;
         }

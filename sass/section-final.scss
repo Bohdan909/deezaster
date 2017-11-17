@@ -1,37 +1,516 @@
 
 /* --------------------
-    Final
+    Map
     ------------------- */  
 
 .section-final {
     height: auto;
 }
 
+.final-socket {
+    @include charSocket;
+    @include transform(translateX(-50%));
+    height: auto;
+    position: absolute;
+    left: 50%;
+    z-index: 1;
+
+    .desc-block {
+        position: absolute;
+        z-index: 99;
+        width: 435px; 
+
+        .title, p {
+            @extend .trans;
+            display: none;
+            opacity: 0;
+        }
+
+        .active &.show {
+
+            .title, p {
+                display: block;
+
+                animation: fadeInText 0.5s ease-out 1.0s forwards;
+                -webkit-animation: fadeInText 0.5s ease-out 1.0s forwards;
+                -ms-animation: fadeInText 0.5s ease-out 1.0s forwards;
+            }
+
+            p {
+                animation-delay: 1.25s;
+                -webkit-animation-delay: 1.25s;
+                -ms-animation-delay: 1.25s;
+            }
+        } 
+    }
+
+    .desc-block[data-index="4"] {
+        top: 30vh;
+        left: 0;
+    }
+
+    .desc-block[data-index="3"] {
+        top: 25vh;
+        right: 0;
+    }
+
+    .desc-block[data-index="2"] {
+        top: 33vh;
+        left: 0;
+    }
+
+    .desc-block[data-index="1"] {
+        top: 13vh;
+        right: 0;
+    }
+
+    @include tablet {
+        @include transform(translateX(0));
+        left: 0;
+        right: 0;
+    }
+}
+
+@keyframes fadeInText {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+        display: none;
+    }
+
+    1% {
+        transform: translateY(20px);
+        opacity: 0;
+        display: block;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+        display: block;
+    }
+}
+
+.map-wrap {
+    @include transition(all, 0.7s, ease-out);
+    @include delay(0.4s);
+    will-change: transform;
+}
+
 .map {
+    position: relative;
     height: 2210px;
     background-image: url(../images/map.png);
     background-color: #dfd590;
     background-position: 50% 0;
+    background-repeat: no-repeat;
+
+    &:after {
+        @extend .ps;
+        height: 130px;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        top: auto;
+
+        background: -webkit-linear-gradient(top, rgba(223, 213, 144, 0) 0%, #dfd590 100%); 
+        background: linear-gradient(to bottom, rgba(223, 213, 144, 0) 0%, #dfd590 100%); 
+    }
 }
+
+.map-socket, .hole-socket {
+    position: relative;
+    height: 2210px;
+    width: 1000px;
+    margin: auto;
+
+    @include tablet {
+        width: auto;
+    }
+}
+
+.hole-socket {
+    @include transform(translateX(-50%));
+    position: absolute;
+    left: 50%;
+    top: 0;
+    z-index: 1;
+
+    @include tablet {
+        @include transform(translateX(0));
+        left: 0;
+        right: 0;
+    }
+}
+
+
+.hole {
+    @include border-rad(50%);
+    @include delay(0.5s);
+    position: absolute;
+    opacity: 0;
+    top: 340px;
+    left: 775px;
+    width: 280px;
+    height: 280px;
+    box-shadow:inset 0 0 60px rgba(0, 0, 0, 0.65), 0 0 10px 99999px rgba(0, 0, 0, 0.65);
+    -webkit-box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.65),0 0 10px 99999px rgba(0, 0, 0, 0.65);
+    will-change: transform;
+    
+
+    transition: top 0.65s ease-out, left 0.65s ease-out, opacity 0.3s linear;
+    -webkit-transition: top 0.65s ease-out, left 0.65s ease-out, opacity 0.3s linear;
+    -ms-transition: top 0.65s ease-out, left 0.65s ease-out, opacity 0.3s linear;
+
+    .active & {
+        opacity: 1;
+    }
+
+    &.hide {
+        @include delay(0s);
+        opacity: 0;
+    }
+}
+
+// .page-pagination a {
+//     text-decoration: none;
+//     text-indent: -40px;
+//     line-height: 8px;
+// }
+
+.monet {
+    @include transition(all, 0.25s, ease-in);
+    position: absolute;
+    cursor: pointer;
+
+    &.hide {
+        @include transform(scale(0));
+    }
+
+    img {
+        display: block;
+        width: 100%;
+    }
+
+    &.monet-4 {
+        top: 445px;
+        right: 18px;
+        z-index: 100;
+    }
+
+    &.monet-3 {
+        top: 980px;
+        left: 80px;
+    }
+
+    &.monet-2 {
+        top: 1265px;
+        left: 525px;
+    }
+
+    &.monet-1 {
+        top: 1840px;
+        left: 320px;
+    }
+}
+
+
+.explosion {
+    position: absolute; 
+    z-index: 100;
+    width: 250px;
+    height: 250px;
+    pointer-events: none; 
+
+    .particle {
+        position: absolute; 
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -ms-border-radius: 50%;
+        animation: pop 0.5s reverse forwards; 
+        -webkit-animation: pop 0.5s reverse forwards; 
+        -ms-animation: pop 0.5s reverse forwards; 
+    }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+  }
+  to {
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+  }
+}
+
+
+
+
+/* --------------------
+    Footer
+    ------------------- */  
 
 .footer {
     height: 100vh;
     background-color: #dfd590;
 }
 
-.page-pagination a {
-    text-decoration: none;
-    text-indent: -40px;
-    line-height: 8px;
+.footer-socket {
+    position: relative;
+    width: 1000px;
+    height: 100%;
+    margin: auto;
+
+    @include tablet {
+        width: auto;
+    }
 }
 
-.monet {
+.footer-text {
+    padding-top: 10vh;
+    text-align: center;
+
+    @include mid {
+        padding-top: 5vh;
+    }
+
+    .title, p {
+        @include delay(0.85s);
+        @include transition(all, 0.5s, ease-out);
+        @include transform(translateY(20px));
+        opacity: 0;
+    }
+
+    p {
+        @include delay(0.75s);
+    }
+
+    .animate & {
+
+        .title, p {
+            @include transform(translateY(0px));
+            opacity: 1;
+        }
+    }
+}
+
+.tel-block {
     position: absolute;
-    top: 200px;
-    left: 600px;
-    width: 50px;
-    height: 50px;
-    border: 3px solid #000;
-    cursor: pointer;
+    height: 71vh;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    @media screen and (min-width: 1025px) and (max-width: 1280px) and (max-height: 650px){
+        height: 97vh;
+    }
+
+    @include port {
+        height: 68vh;    
+    }
+
+    .tel {
+        @include transition(all, 0.6s, ease-out);
+        position: absolute;
+        top: 100%;
+
+        &.tel-1 {
+            @include delay(0.6s);
+            left: 95px;
+
+            @include mid {
+                left: 130px;
+            }
+        }
+
+        &.tel-2 {
+            @include delay(0.7s);
+            right: 103px;
+
+            @include mid {
+                right: 130px;
+            }
+        }
+
+        .animate & {
+            top: 0;
+        }
+
+        &.hover {
+            top: 20%;
+            opacity: 0.2;
+            
+            &.tel-1, &.tel-2 {
+                @include delay(0s);
+            }
+        }
+    }
 }
 
+.download {
+    @extend .trans;
+    @include delay(0.45s);
+    position: absolute;
+    opacity: 0;
+    display: block;
+    width: 140px;
+    top: 20%;
+    text-decoration: none;
+    text-align: center;
+
+    @include mid {
+        top: 30%;
+    }
+
+    .animate & {
+        opacity: 1;
+    }
+
+    &.download-1 {
+        left: -90px;
+
+        @include mid {
+            left: 15px;
+        }
+    }
+
+    &.download-2 {
+        right: -90px;
+
+        @include mid {
+            right: 15px;
+        }
+    }
+
+    .btn-circle {
+        margin-bottom: 13px;
+
+        img {
+            @include transform(translateY(-50%) translateX(-50%));
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            display: block;
+            z-index: 1;
+        }
+    }
+
+    .download-text {
+        color: #fff;
+
+        span {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 7px;
+            font-family: $fontMain;
+        }
+
+        b {
+            font-weight: normal;
+            display: block;
+            font-size: 26px;
+            font-family: $fontBold;
+        }
+    }
+}
+
+@media (min-width: 1024px) and (min-height: 1366px){
+
+    .footer-text {
+        padding-top: 15vh;
+    }   
+
+    .tel-block .tel.tel-2 {
+        @include transform(translateY(-10px));
+    }
+}
+
+
+// TOUCH
+@include tablet {
+
+    .map-wrap {
+        transform: translateY(0) !important;
+        -webkit-transform: translateY(0) !important;
+        -ms-transform: translateY(0) !important;
+    }
+
+    .map {
+        height: 100vh;
+        background-image: url(../images/map-mobile.jpg);
+        background-size: cover;
+        background-position: 50% 25%;
+
+        @include land {
+            background-position: 50% 35%;
+        }
+
+        &:after {
+            height: 60vh;
+            background: -webkit-linear-gradient(top, rgba(223, 213, 144, 0) 0%, rgba(223, 213, 144, 1) 40%, #dfd590 100%); 
+            background: linear-gradient(to bottom, rgba(223, 213, 144, 0) 0%, rgba(223, 213, 144, 1) 40%, #dfd590 100%); 
+        }
+    }
+
+    .map-socket, .hole-socket, .final-socket {
+        display: none;
+    }
+
+    .footer {
+        position: absolute;
+        height: 100vh;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        right: 0;
+        background: none;
+
+        
+    }
+
+    .footer-text {
+
+        .title, p {
+            opacity: 1;
+        }
+    }
+
+    .tel-block {
+        height: 60vh;
+
+        .tel {
+            display: none !important;
+        }
+    }
+
+    .download {
+        top: auto;
+        bottom: 14vh;
+        opacity: 1;
+
+        &.download-1 {
+            left: 20%;
+        }
+
+        &.download-2 {
+            right: 20%;
+        }
+    }
+}
+
+@include mobile {
+    
+    .download {
+
+        &.download-1 {
+            left: 10%;
+        }
+
+        &.download-2 {
+            right: 10%;
+        }
+    }
+}
