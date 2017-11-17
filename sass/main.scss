@@ -81,9 +81,9 @@ html, body {
     -webkit-clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
     clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
 
-    transition: all 0.9s cubic-bezier(.55,.085,0,.99) 1.0s;
-    -webkit-transition: all 0.9s cubic-bezier(.55,.085,0,.99) 1.0s;
-    -ms-transition: all 0.9s cubic-bezier(.55,.085,0,.99) 1.0s;
+    transition: all 0.7s cubic-bezier(.55,.085,0,.99) 0.8s;
+    -webkit-transition: all 0.7s cubic-bezier(.55,.085,0,.99) 0.8s;
+    -ms-transition: all 0.7s cubic-bezier(.55,.085,0,.99) 0.8s;
 
     &.active {
         transition-delay: 0.0s !important;
@@ -179,7 +179,7 @@ html, body {
     }
 
     &:after {
-        @include transform(rotate(-60deg) scale(0.8));
+        @include transform(rotate(-70deg) scale(0.8));
         @include transition(transform, 0.6s, ease-in);
         @extend .ps;
         left: 0;
@@ -190,10 +190,10 @@ html, body {
     }
 
     .loaded &:hover:after, .active &:hover:after {
-        @include transform(rotate(-90deg) scale(0.8));
-        transition: transform 0.5s ease-in-out 0s;
-        -webkit-transition: -webkit-transform 0.5s ease-in-out 0s;
-        -ms-transition: -ms-transform 0.5s ease-in-out 0s;
+        @include transform(rotate(-70deg) scale(0.8));
+        transition: transform 0.5s ease-in-out 0s !important;
+        -webkit-transition: -webkit-transform 0.5s ease-in-out 0s !important;
+        -ms-transition: -ms-transform 0.5s ease-in-out 0s !important;
     }
 }
 

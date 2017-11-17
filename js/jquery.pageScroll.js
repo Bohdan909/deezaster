@@ -79,7 +79,7 @@
             }
         }
 
-        var finIndex = 11;
+        var finIndex = 10;
 
         function handlerMove(preIndex, nowIndex) {
             settings.beforeMove(preIndex, $pages.eq(preIndex));
@@ -93,31 +93,37 @@
                 $pageList.eq(preIndex).removeClass("active");
                 $pageList.eq(nowIndex).addClass("active");
             }
-
-            if (nowIndex <= 4 || nowIndex == finIndex){
+            
+            //if (nowIndex <= 4 || nowIndex == finIndex){
+            if (nowIndex <= 4){
                 $navLi.removeClass("active");
                 $navLi.eq(nowIndex).addClass("active");
-
-                if (nowIndex == finIndex){
-                    $navLi.removeClass("active");
-                    $navLi.eq(6).addClass("active");
-                }
-
             } else { // Inner Slider
                 $navLi.removeClass("active");
                 $navLi.eq(5).addClass("active");
             }
 
+            // Final Section
+            if (nowIndex == finIndex){
+                $navLi.removeClass("active");
+                $navLi.eq(6).addClass("active");
+
+                //document.querySelector(".desc-block[data-index='4'").classList.add("show");
+            }
+
             // Characters Nav    
             if (nowIndex >= 5 && nowIndex < finIndex){
-               $char.addClass("show");
+               $char.show().addClass("show");
+               //$char.removeClass("hide");
                $charLi.eq(preIndex - 5).removeClass("active");
                $charLi.eq(nowIndex - 5).addClass("active");
             } else {
-               $char.removeClass("show");
+               $char.removeClass("show").delay(400).queue(function(){
+                    $(this).hide(); 
+               });
+               //$char.addClass("hide");
                $charLi.removeClass("active");
             } 
-
 
             console.log("pre " + preIndex + "\n" + "NOW: " + nowIndex);
 

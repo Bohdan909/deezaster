@@ -1,36 +1,13 @@
-@mixin lg {
-    @media (max-width: 1600px){
-        @content;
-    }
-}
 
-@mixin charSocket {
-    position: relative;
-    width: 1500px;
-    height: 100%;
-    margin: auto;
 
-    @include lg {
-        width: 1250px;
-    }
-
-    @include mid {
-        width: 1000px;
-    }
-
-    @include tablet {
-        width: auto;
-        margin: 0 25px;
-    }
-}
 
 /* --------------------
     Characters Nav
     ------------------- */  
 
 .navigation-char-wrap {
-    @include transition(opacity, 0.6s, linear);
-    @include delay(0.8s);
+    @include transition(opacity, 0.2s, linear);
+    @include delay(0.1s);
     @include charSocket;
     @include transform(translateX(-50%));
     position: absolute;
@@ -40,13 +17,23 @@
     z-index: 11;
     height: auto;
 
-    //
-    // opacity: 1;
-    // z-index: 1;
+    // display: none;
 
     &.show {
         opacity: 1;
-        z-index: 1;
+        // display: block;
+
+        // animation: fadeIn 0.5s linear 0.8s forwards;
+        // -webkit-animation: fadeIn 0.5s linear 0.8s forwards;
+        // -ms-animation: fadeIn 0.5s linear 0.8s forwards;
+    }
+
+    &.hide {
+        opacity: 0;
+
+        animation: fadeOut 0.5s linear 0.5s forwards;
+        -webkit-animation: fadeOut 0.5s linear 0.5s forwards;
+        -ms-animation: fadeOut 0.5s linear 0.5s forwards;
     }
 
     @include tablet {
@@ -81,7 +68,7 @@
         white-space: nowrap;
 
         span {
-            @include transition(all, 0.5s, ease-out);
+            @include transition(all, 0.3s, ease-out);
             @include transform(translateX(-15px));
             display: block;
             opacity: 0;
@@ -90,8 +77,8 @@
         }
 
         i {
-            @include transition(all, 0.5s, ease-out);
-            @include delay(0.15s);
+            @include transition(all, 0.3s, ease-out);
+            @include delay(0.1s);
             @include border-rad(4px);
             @include transform(translateX(-10px));
             display: block;
@@ -195,6 +182,7 @@
     }
 
     @include mobile-min {
+
           @include land {
             bottom: 0;
         }  
@@ -556,7 +544,7 @@
 
         .character-image {
             height: 70vh;
-            right: -340px;
+            right: -290px;
             bottom: -20px;
 
             @include land {
@@ -583,20 +571,39 @@
     @include charSocket;
 }
 
+.character-image, .character-name, 
+.character-desc .title, .character-desc p,
+.authorize-block {
+    @include transition(all, 0.4s, ease-out);
+    @include delay(0.2s);
+}
+
+
 .character-image {
-    @include transform(translateX(-50%));
+    @include transform(scaleY(1.02) translateY(25px) translateX(-50%));
     position: absolute;
     z-index: 10;
     left: 50%;
     height: 100vh;
+
+    .active &, .prev & {
+        @include transform(scaleY(1) translateY(0) translateX(-50%));
+    }
 }
 
 .character-name {
+    @include transform(translateY(50px));
+    @include delay(0.25s);
     position: absolute;
     top: 58vh;
     font-family: $fontBold;
     font-size: 138px;
     white-space: nowrap;
+    z-index: -1;
+
+    .active &, .prev & {
+        @include transform(translateY(0));
+    }
 }
 
 .character-desc {
@@ -605,6 +612,24 @@
     top: 15vh;
     width: 325px;
 
+    .title, p {
+        @include transform(translateY(20px));
+    }
+
+    .active &, .prev & {
+        .title, p {
+            @include transform(translateY(0px));
+        }
+    }
+
+    .title {
+        font-size: 38px;
+    }
+
+    p {
+        @include delay(0.25s);
+    }
+
     @include mid {
         right: auto;
         left: 0;
@@ -612,10 +637,15 @@
 }
 
 .authorize-block {
+    @include transform(translateY(20px));
     position: absolute;
     width: 300px;
     left: 0;
     top: 28vh;
+
+    .active &, .prev & {
+        @include transform(translateY(0));
+    }
 
     @include mid {
         p {
@@ -735,8 +765,12 @@
     }
     
     .character-image {
-        @include transform(translateX(0));
+        @include transform(scaleY(1.02) translateY(25px) translateX(0));
         left: auto !important;
+
+        .active &, .prev & {
+            @include transform(scaleY(1) translateY(0) translateX(0));
+        }
     }
 }
 
