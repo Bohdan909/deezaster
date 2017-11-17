@@ -100,7 +100,7 @@
 .map {
     position: relative;
     height: 2210px;
-    background-image: url(../images/map.png);
+    background-image: none; /*url(../images/map.png);*/
     background-color: #dfd590;
     background-position: 50% 0;
     background-repeat: no-repeat;
@@ -440,7 +440,7 @@
 
     .map {
         height: 100vh;
-        background-image: url(../images/map-mobile.jpg);
+        background-image: none;/*url(../images/map-mobile.jpg);*/
         background-size: cover;
         background-position: 50% 25%;
 

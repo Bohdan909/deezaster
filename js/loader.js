@@ -84,6 +84,7 @@ function loadCSSImages() {
   preloadCSSImages.on("complete", handleCSSImagesLoadComplete, this);
   preloadCSSImages.loadManifest([
     {id: "map", src: "images/map.png"},
+    {id: "mapmobile", src: "images/map-mobile.jpg"},
     {id: "sprites", src: "images/sprites.png"}
   ]);
 }
@@ -105,7 +106,14 @@ function loadSectionFinal() {
 
 function handleCSSImagesLoadComplete() {
   console.log(' === loading CSS images complete ===');
-  let mapImgSrc = preloadCSSImages.getItem("map").src;
+  const mq = window.matchMedia('(max-width: 1024px)');
+  let mapImgSrc = null;
+  if (mq.matches) {
+    mapImgSrc = preloadCSSImages.getItem("mapmobile").src;
+  } else {
+    mapImgSrc = preloadCSSImages.getItem("map").src;
+  }
+  // let mapImgSrc = preloadCSSImages.getItem("map").src;
   document.querySelector(".map").style.backgroundImage = 'url(' + mapImgSrc + ')';
 
   let spriteImgSrc = preloadCSSImages.getItem("sprites").src;
