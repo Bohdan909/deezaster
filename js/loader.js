@@ -3,6 +3,9 @@ let preloadSection3 = new createjs.LoadQueue();
 let preloadSection4 = new createjs.LoadQueue();
 let preloadSection5 = new createjs.LoadQueue();
 let preloadChars = new createjs.LoadQueue();
+let preloadCSSImages = new createjs.LoadQueue();
+
+
 
 window.addEventListener("load", ()=> {
   "use strict";
@@ -12,6 +15,7 @@ window.addEventListener("load", ()=> {
   loadSection4();
   loadSection5();
   loadCharacters();
+  loadCSSImages();
 });
 
 function loadSection2() {
@@ -74,6 +78,23 @@ function loadCharacters() {
   ]);
 }
 
+function loadCSSImages() {
+  console.log(' === loading CSS images ===');
+  preloadCSSImages.on("complete", handleCSSImagesLoadComplete, this);
+  preloadCSSImages.loadManifest([
+    {id: "map", src: "images/map.png"},
+    {id: "sprites", src: "images/sprites.png"}
+  ]);
+}
+
+function handleCSSImagesLoadComplete() {
+  console.log(' === loading CSS images complete ===');
+  let mapImgSrc = preloadCSSImages.getItem("map").src;
+  document.querySelector(".map").style.backgroundImage = 'url(' + mapImgSrc + ')';
+
+  let spriteImgSrc = preloadCSSImages.getItem("sprites").src;
+}
+
 function handleSection2LoadComplete() {
   let personImage = preloadSection2.getResult("person2");
   personImage.classList.add("person");
@@ -89,13 +110,12 @@ function handleSection2LoadComplete() {
 function handleSection3LoadComplete() {
   // section 3
   let section3Element = document.querySelector(".section-3");
-  let cubeBlue = preloadSection3.getResult("cubeblue");
+  
   let person3 = preloadSection3.getResult("person3");
   person3.classList.add("person");
   let section3f = preloadSection3.getResult("section3f");
   section3f.classList.add("figure");
-  section3Element.querySelector(".cube.cube-3.cube-vis.cube-animate-1").appendChild(cubeBlue);
-  section3Element.querySelector(".cube.cube-3.cube-vis.cube-animate-2").appendChild(cubeBlue);
+
   section3Element.querySelector(".socket").appendChild(person3);
   section3Element.appendChild(section3f);
 }
@@ -127,30 +147,35 @@ function handleSection5LoadComplete() {
 
 function handleCharsLoadComplete() {
   let icoFb1 = preloadChars.getResult("icofb");
-  let icoFb2 = icoFb1.cloneNode();
-  let icoFb3 = icoFb1.cloneNode();
-  let icoFb4 = icoFb1.cloneNode();
-  let icoFb5 = icoFb1.cloneNode();
+  let icoFb2 = preloadChars.getResult("icofb");
+  let icoFb3 = preloadChars.getResult("icofb");
+  let icoFb4 = preloadChars.getResult("icofb");
+  let icoFb5 = preloadChars.getResult("icofb");
 
   let char1Element = document.querySelector(".section.character-1");
-  char1Element.querySelector(".character-socket").appendChild(preloadChars.getResult("char1"));
-  char1Element.querySelector(".btn-authorize .btn-circle").appendChild(icoFb1);
+  let childElement = char1Element.querySelector(".character-name");
+  char1Element.querySelector(".character-socket").insertBefore(preloadChars.getResult("char1"), childElement);
+  //char1Element.querySelector(".btn-authorize .btn-circle").appendChild(icoFb1);
 
   let char2Element = document.querySelector(".section.character-2");
-  char2Element.querySelector(".character-socket").appendChild(preloadChars.getResult("char2"));
-  char2Element.querySelector(".btn-authorize .btn-circle").appendChild(icoFb2);
+  childElement = char2Element.querySelector(".character-name");
+  char2Element.querySelector(".character-socket").insertBefore(preloadChars.getResult("char2"), childElement);
+  //char2Element.querySelector(".btn-authorize .btn-circle").appendChild(icoFb2);
 
   let char3Element = document.querySelector(".section.character-3");
-  char3Element.querySelector(".character-socket").appendChild(preloadChars.getResult("char3"));
-  char3Element.querySelector(".btn-authorize .btn-circle").appendChild(icoFb3);
+  childElement = char3Element.querySelector(".character-name");
+  char3Element.querySelector(".character-socket").insertBefore(preloadChars.getResult("char3"), childElement);
+  //char3Element.querySelector(".btn-authorize .btn-circle").appendChild(icoFb3);
 
   let char4Element = document.querySelector(".section.character-4");
-  char4Element.querySelector(".character-socket").appendChild(preloadChars.getResult("char4"));
-  char4Element.querySelector(".btn-authorize .btn-circle").appendChild(icoFb4);
+  childElement = char4Element.querySelector(".character-name");
+  char4Element.querySelector(".character-socket").insertBefore(preloadChars.getResult("char4"), childElement);
+  //char4Element.querySelector(".btn-authorize .btn-circle").appendChild(icoFb4);
 
   let char5Element = document.querySelector(".section.character-5");
-  char5Element.querySelector(".character-socket").appendChild(preloadChars.getResult("char5"));
-  char5Element.querySelector(".btn-authorize .btn-circle").appendChild(icoFb5);
+  childElement = char5Element.querySelector(".character-name");
+  char5Element.querySelector(".character-socket").insertBefore(preloadChars.getResult("char5"), childElement);
+  //char5Element.querySelector(".btn-authorize .btn-circle").appendChild(icoFb5);
 }
 
 function setCSSBackgroundImageForElement(element, loadQueue, resourceId) {

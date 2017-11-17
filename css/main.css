@@ -2617,7 +2617,7 @@ div.active.section .text-block .title, div.active.section .text-block p, div.pre
 
 .map {
   height: 2210px;
-  background-image: url(../images/map.png);
+  background-image: none;/*url(../images/map.png);*/
   background-color: #dfd590;
   background-position: 50% 0;
 }
