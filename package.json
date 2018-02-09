@@ -6,14 +6,21 @@
     "grunt-autoprefixer": "latest",
     "grunt-contrib-cssmin": "^1.0.1",
     "grunt-contrib-jshint": "latest",
-    "grunt-contrib-sass": "^0.9.2",
     "grunt-contrib-uglify": "^1.0.1",
     "grunt-contrib-watch": "latest",
+<<<<<<< HEAD
+=======
+    "grunt-sass": "^2.0.0",
+>>>>>>> 5dc32a1b6756f47f02d0355aaf91272da2e33a0b
     "grunt-remove-logging": "latest",
     "grunt-string-replace": "latest"
   },
   "dependencies": {
+<<<<<<< HEAD
     "grunt-sass": "^2.0.0",
     "node-sass": "^4.7.2"
+=======
+    
+>>>>>>> 5dc32a1b6756f47f02d0355aaf91272da2e33a0b
   }
 }

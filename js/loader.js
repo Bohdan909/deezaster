@@ -7,7 +7,9 @@ let preloadCSSImages = new createjs.LoadQueue();
 let preloadSectionFinal = new createjs.LoadQueue();
 
 
+
 window.addEventListener("load", function() {
+
   "use strict";
 
   loadSection2();
@@ -34,11 +36,15 @@ function loadSection3() {
   preloadSection3.loadManifest([
     {id: "cubeblue", src: "images/cube-blue.png"},
     {id: "person3", src: "images/person-3.png"},
+<<<<<<< HEAD
     {id: "person3-start", src: "images/person-3-start.png"},
+=======
+>>>>>>> 5dc32a1b6756f47f02d0355aaf91272da2e33a0b
     {id: "section3f", src: "images/section-3-f.png"}
   ]);
 }
 
+<<<<<<< HEAD
 
 function loadSection4() {
   console.log(' === loading section 4 resources ===');
@@ -71,12 +77,26 @@ function loadSection4() {
     {id: "frog",    src: tabImgSrc5},
     {id: "barrel",  src: tabImgSrc6},
     {id: "bamboo",  src: tabImgSrc7}
+=======
+function loadSection4() {
+  console.log(' === loading section 4 resources ===');
+  preloadSection4.on("complete", handleSection4LoadComplete, this);
+  preloadSection4.loadManifest([
+    {id: "mango", src: "images/Mango.gif"},
+    {id: "fruit", src: "images/Fruit.gif"},
+    {id: "monster", src: "images/Monster.gif"},
+    {id: "idol", src: "images/Idol.gif"},
+    {id: "frog", src: "images/Frog.gif"},
+    {id: "barrel", src: "images/Barrel.gif"},
+    {id: "bamboo", src: "images/Bamboo.gif"}
+>>>>>>> 5dc32a1b6756f47f02d0355aaf91272da2e33a0b
   ]);
 }
 
 function loadSection5() {
   console.log(' === loading section 5 resources ===');
   preloadSection5.on("complete", handleSection5LoadComplete, this);
+<<<<<<< HEAD
 
   const mq = window.matchMedia('(min-width: 768px)');
   let tabImgSrc1 = "images/Fireball.gif";
@@ -105,6 +125,16 @@ function loadSection5() {
     {id: "waterring", src: tabImgSrc5},
     {id: "goldenidol", src: tabImgSrc6},
     {id: "combined", src: tabImgSrc7}
+=======
+  preloadSection5.loadManifest([
+    {id: "fireball", src: "images/Fireball.gif"},
+    {id: "tornado", src: "images/Tornado.gif"},
+    {id: "crossfire", src: "images/Crossfire.gif"},
+    {id: "boardcleaner", src: "images/BoardCleaner.gif"},
+    {id: "waterring", src: "images/WaterRing.gif"},
+    {id: "goldenidol", src: "images/GoldenIdol.gif"},
+    {id: "combined", src: "images/Combined.gif"}
+>>>>>>> 5dc32a1b6756f47f02d0355aaf91272da2e33a0b
   ]);
 }
 
@@ -125,7 +155,11 @@ function loadCSSImages() {
   console.log(' === loading CSS images ===');
   preloadCSSImages.on("complete", handleCSSImagesLoadComplete, this);
   preloadCSSImages.loadManifest([
+<<<<<<< HEAD
     {id: "map", src: "images/map.jpg"},
+=======
+    {id: "map", src: "images/map.png"},
+>>>>>>> 5dc32a1b6756f47f02d0355aaf91272da2e33a0b
     {id: "mapmobile", src: "images/map-mobile.jpg"},
     {id: "sprites", src: "images/sprites.png"}
   ]);
@@ -139,8 +173,13 @@ function loadSectionFinal() {
     {id: "monet03", src: "images/monet-03.png"},
     {id: "monet02", src: "images/monet-02.png"},
     {id: "monet01", src: "images/monet-01.png"},
+<<<<<<< HEAD
     //{id: "app1", src: "images/app-1.svg"},
     //{id: "app2", src: "images/app-2.svg"},
+=======
+    {id: "app1", src: "images/app-1.png"},
+    {id: "app2", src: "images/app-2.png"},
+>>>>>>> 5dc32a1b6756f47f02d0355aaf91272da2e33a0b
     {id: "tel1", src: "images/tel-1.png"},
     {id: "tel2", src: "images/tel-2.png"}
   ]);
@@ -177,17 +216,25 @@ function handleSection3LoadComplete() {
   // section 3
   let section3Element = document.querySelector(".section-3");
   
+<<<<<<< HEAD
   let person3_start = preloadSection3.getResult("person3-start");
   person3_start.classList.add("person", "person-sad");
 
   let person3 = preloadSection3.getResult("person3");
   person3.classList.add("person", "person-joyful");
 
+=======
+  let person3 = preloadSection3.getResult("person3");
+  person3.classList.add("person");
+>>>>>>> 5dc32a1b6756f47f02d0355aaf91272da2e33a0b
   let section3f = preloadSection3.getResult("section3f");
   section3f.classList.add("figure");
 
   section3Element.querySelector(".socket").appendChild(person3);
+<<<<<<< HEAD
   section3Element.querySelector(".socket").appendChild(person3_start);
+=======
+>>>>>>> 5dc32a1b6756f47f02d0355aaf91272da2e33a0b
   section3Element.appendChild(section3f);
 }
 
@@ -195,6 +242,7 @@ function handleSection4LoadComplete() {
   // section 4
   let section4Element = document.querySelector(".section-4");
   let section4ScreenElem = section4Element.querySelector(".screen .screen-inner");
+<<<<<<< HEAD
 
   var tab1 = section4ScreenElem.querySelector("#tab-1").appendChild(preloadSection4.getResult("mango"));
   setAttributes(tab1, {"autoplay": "", "loop": ""}); 
@@ -249,6 +297,27 @@ function setAttributes(el, options) {
     Object.keys(options).forEach(function(attr) {
       el.setAttribute(attr, options[attr]);
     });
+=======
+  section4ScreenElem.querySelector("#tab-1").appendChild(preloadSection4.getResult("mango"));
+  section4ScreenElem.querySelector("#tab-2").appendChild(preloadSection4.getResult("fruit"));
+  section4ScreenElem.querySelector("#tab-3").appendChild(preloadSection4.getResult("monster"));
+  section4ScreenElem.querySelector("#tab-4").appendChild(preloadSection4.getResult("idol"));
+  section4ScreenElem.querySelector("#tab-5").appendChild(preloadSection4.getResult("frog"));
+  section4ScreenElem.querySelector("#tab-6").appendChild(preloadSection4.getResult("barrel"));
+  section4ScreenElem.querySelector("#tab-7").appendChild(preloadSection4.getResult("bamboo"));
+}
+
+function handleSection5LoadComplete() {
+  let section5Element = document.querySelector(".section-5");
+  let section5ScreenElem = section5Element.querySelector(".screen .screen-inner");
+  section5ScreenElem.querySelector("#tab-21").appendChild(preloadSection5.getResult("fireball"));
+  section5ScreenElem.querySelector("#tab-22").appendChild(preloadSection5.getResult("tornado"));
+  section5ScreenElem.querySelector("#tab-23").appendChild(preloadSection5.getResult("crossfire"));
+  section5ScreenElem.querySelector("#tab-24").appendChild(preloadSection5.getResult("boardcleaner"));
+  section5ScreenElem.querySelector("#tab-25").appendChild(preloadSection5.getResult("waterring"));
+  section5ScreenElem.querySelector("#tab-26").appendChild(preloadSection5.getResult("goldenidol"));
+  section5ScreenElem.querySelector("#tab-27").appendChild(preloadSection5.getResult("combined"));
+>>>>>>> 5dc32a1b6756f47f02d0355aaf91272da2e33a0b
 }
 
 function handleCharsLoadComplete() {
@@ -263,7 +332,11 @@ function handleCharsLoadComplete() {
   let char5 = preloadChars.getResult("char5");
   char5.classList.add("character-image");
 
+<<<<<<< HEAD
   let char1Element = document.querySelector(".section.character-4");
+=======
+  let char1Element = document.querySelector(".section.character-1");
+>>>>>>> 5dc32a1b6756f47f02d0355aaf91272da2e33a0b
   let childElement = char1Element.querySelector(".character-name");
   char1Element.querySelector(".character-socket").insertBefore(char1, childElement);
 
@@ -275,7 +348,11 @@ function handleCharsLoadComplete() {
   childElement = char3Element.querySelector(".character-name");
   char3Element.querySelector(".character-socket").insertBefore(char3, childElement);
 
+<<<<<<< HEAD
   let char4Element = document.querySelector(".section.character-1");
+=======
+  let char4Element = document.querySelector(".section.character-4");
+>>>>>>> 5dc32a1b6756f47f02d0355aaf91272da2e33a0b
   childElement = char4Element.querySelector(".character-name");
   char4Element.querySelector(".character-socket").insertBefore(char4, childElement);
 
@@ -293,6 +370,7 @@ function handleFinalImagesLoadComplete() {
   monetSocketElem.querySelector(".monet-1").appendChild(preloadSectionFinal.getResult("monet01"));
 
   let footerTelBlock = sectionFinalElem.querySelector(".footer .tel-block");
+<<<<<<< HEAD
   let telLink1 = sectionFinalElem.querySelector(".footer .tel-link-1");
   let telLink2 = sectionFinalElem.querySelector(".footer .tel-link-2");
 
@@ -306,6 +384,16 @@ function handleFinalImagesLoadComplete() {
   tel2Img.classList.add("tel-2");
   telLink1.appendChild(tel1Img);
   telLink2.appendChild(tel2Img);
+=======
+  footerTelBlock.querySelector(".download-1 .btn-circle").appendChild(preloadSectionFinal.getResult("app1"));
+  footerTelBlock.querySelector(".download-2 .btn-circle").appendChild(preloadSectionFinal.getResult("app2"));
+  let tel1Img = preloadSectionFinal.getResult("tel1");
+  tel1Img.classList.add("tel", "tel-1");
+  let tel2Img = preloadSectionFinal.getResult("tel2");
+  tel2Img.classList.add("tel", "tel-2");
+  footerTelBlock.appendChild(tel1Img);
+  footerTelBlock.appendChild(tel2Img);
+>>>>>>> 5dc32a1b6756f47f02d0355aaf91272da2e33a0b
 
 }
 

@@ -3144,6 +3144,8 @@ div.section-5 .demo-column .help-block {
 .map {
   position: relative;
   height: 2210px;
+
+  background-image: none;
   background-color: #dfd590;
   background-position: 50% 0;
   background-repeat: no-repeat; }

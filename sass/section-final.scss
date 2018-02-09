@@ -139,6 +139,10 @@
 .map {
     position: relative;
     height: 2210px;
+<<<<<<< HEAD
+=======
+    background-image: none; /*url(../images/map.png);*/
+>>>>>>> 5dc32a1b6756f47f02d0355aaf91272da2e33a0b
     background-color: #dfd590;
     background-position: 50% 0;
     background-repeat: no-repeat;
@@ -481,11 +485,19 @@
             -ms-transform: translateY(0) !important;
         }
 
+<<<<<<< HEAD
         .map {
             height: 100vh;
             //background-image: url(../images/map-mobile.jpg);
             background-size: cover;
             background-position: 50% 25%;
+=======
+    .map {
+        height: 100vh;
+        background-image: none;/*url(../images/map-mobile.jpg);*/
+        background-size: cover;
+        background-position: 50% 25%;
+>>>>>>> 5dc32a1b6756f47f02d0355aaf91272da2e33a0b
 
             @include land {
                 background-position: 50% 35%;
