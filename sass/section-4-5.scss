@@ -8,6 +8,14 @@
     .text-block {
         position: relative;
         margin-bottom: 20px;
+
+        @include mobile-min {
+            margin-bottom: 10px;
+            
+            p {
+                margin-bottom: 0;
+            }
+        }
     }
 
     .demo-column {
@@ -24,19 +32,56 @@
                 left: -80px;
             }
 
-            @media screen and (min-width: 1025px) and (max-height: 780px){
+            @media screen and (min-width: 1025px) and (max-height: 840px){
                 display: none;
             }
+        }
+    }
+
+    .help-block-swipe {
+        display: none;
+
+        @include tablet {
+            position: absolute;
+            display: block;
+            right:-5px;
+            top: 450px;
+            width: 80px;
+            padding-top: 63px;
+            text-align: right;
+
+            .help-arrow {
+                @include transform(scaleX(-1) rotate(85deg));
+                right: -5px;
+            }
+
+            @include land {
+                display: none;
+            }
+        }
+
+        @include mobile {
+            top: 310px;
+        }
+
+        @include mobile-min {
+            top: 230px;
         }
     }
 }
 
 .section-4 {
+    background: rgb(145,181,204);
     background-image: -moz-linear-gradient( 16deg, rgb(145,181,204) 0%, rgb(102,177,201) 100%);
     background-image: -webkit-linear-gradient( 16deg, rgb(145,181,204) 0%, rgb(102,177,201) 100%);
     background-image: -ms-inear-gradient( 16deg, rgb(145,181,204) 0%, rgb(102,177,201) 100%);
 
     .demo-column {
+        left: 50px;
+
+        @include mid {
+            left: 0;
+        }
 
         .help-block {
             left: 660px;
@@ -45,7 +90,6 @@
                 left: -80px;
                 @include rot(-50deg);
             }
-
         }
 
         .btn-circle span {
@@ -55,17 +99,22 @@
 }
 
 .section-5 {
+    background: rgb(56,65,79);
     background-image: -moz-linear-gradient( 16deg, rgb(56,65,79) 0%, rgb(65,73,90) 100%);
     background-image: -webkit-linear-gradient( 16deg, rgb(56,65,79) 0%, rgb(65,73,90) 100%);
     background-image: -ms-linear-gradient( 16deg, rgb(56,65,79) 0%, rgb(65,73,90) 100%);
 
     .demo-column {
         float: right;
-        right: -20px;
+        //right: -20px;
+        right: 40px;
+
+        @include mid {
+            right: 0;
+        }
 
         @include tablet {
             float: none;
-            right: 0;
         }
 
         .help-block {
@@ -129,8 +178,9 @@ $tabDur: 0.5s;
 
         > span {
             position: absolute;
-            width: 100%;
-            left: 0;
+            width: 150px;
+            left: 50%;
+            margin-left: -75px;
             top: 153px;
             text-transform: uppercase;
             font-family: $fontBold;
@@ -150,7 +200,7 @@ $tabDur: 0.5s;
             @extend .ps;
             width: 100%;
             height: 100%;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.3);
         }
 
         i {
@@ -175,7 +225,7 @@ $tabDur: 0.5s;
         }
 
         &:hover:before {
-            background: rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.65);
         }
 
         &.current i, &.current > span {
@@ -269,6 +319,99 @@ $tabDur: 0.5s;
     .demo-tab-7.demo-tab:after {
         background-position: -236px -250px;
     }
+
+    @include tablet {
+
+        .demo-tab-1.demo-tab:after {
+            background-position: -6px -139px;
+        }
+
+        .demo-tab-2.demo-tab:after {
+            background-position: -126px -139px;
+        }
+
+        .demo-tab-3.demo-tab:after {
+            background-position: -245px -139px;
+        }
+
+        .demo-tab-4.demo-tab:after {
+            background-position: -362px -139px;
+        }
+
+        .demo-tab-5.demo-tab:after {
+            background-position: -8px -261px;
+        }
+
+        .demo-tab-6.demo-tab:after {
+            background-position: -127px -261px;
+        }
+
+        .demo-tab-7.demo-tab:after {
+            background-position: -245px -261px;
+        }
+    }
+
+    @include mobile {
+
+        .demo-tab-1.demo-tab:after {
+            background-position: -14px -148px;
+        }
+
+        .demo-tab-2.demo-tab:after {
+            background-position: -133px -148px;
+        }
+
+        .demo-tab-3.demo-tab:after {
+            background-position: -253px -148px;
+        }
+
+        .demo-tab-4.demo-tab:after {
+            background-position: -370px -148px;
+        }
+
+        .demo-tab-5.demo-tab:after {
+            background-position: -15px -270px;
+        }
+
+        .demo-tab-6.demo-tab:after {
+            background-position: -134px -270px;
+        }
+
+        .demo-tab-7.demo-tab:after {
+            background-position: -254px -270px;
+        }
+    }
+
+    @include mobile-min {
+
+        .demo-tab-1.demo-tab:after {
+            background-position: -27px -159px;
+        }
+
+        .demo-tab-2.demo-tab:after {
+            background-position: -145px -159px;
+        }
+
+        .demo-tab-3.demo-tab:after {
+            background-position: -265px -160px;
+        }
+
+        .demo-tab-4.demo-tab:after {
+            background-position: -382px -161px;
+        }
+
+        .demo-tab-5.demo-tab:after {
+            background-position: -28px -282px;
+        }
+
+        .demo-tab-6.demo-tab:after {
+            background-position: -147px -282px;
+        }
+
+        .demo-tab-7.demo-tab:after {
+            background-position: -266px -281px;
+        }
+    }
 }
 
 .section-5 {
@@ -278,27 +421,125 @@ $tabDur: 0.5s;
     }
 
     .demo-tab-2.demo-tab:after {
-        background-position: -118px -367px;
-    }
-
-    .demo-tab-3.demo-tab:after {
-        background-position: -236px -367px;
-    }
-
-    .demo-tab-4.demo-tab:after {
-        background-position: -354px -367px;
-    }
-
-    .demo-tab-5.demo-tab:after {
         background-position: 0 -486px;
     }
 
+    .demo-tab-3.demo-tab:after {
+        background-position: -118px -367px;
+    }
+
+    .demo-tab-4.demo-tab:after {
+        
+        background-position: -236px -367px;
+    }
+
+    .demo-tab-5.demo-tab:after {
+        background-position: -118px -487px;
+    }
+
     .demo-tab-6.demo-tab:after {
-        background-position: -118px -486px;
+        background-position: -236px -487px;
     }
 
     .demo-tab-7.demo-tab:after {
-        background-position: -236px -486px;
+        
+        background-position: -354px -367px;
+    }
+
+    @include tablet {
+
+        .demo-tab-1.demo-tab:after {
+            background-position: -7px -377px;
+        }
+
+        .demo-tab-2.demo-tab:after {
+           background-position: -9px -496px;
+        }
+
+        .demo-tab-3.demo-tab:after {
+            background-position: -127px -377px;
+        }
+
+        .demo-tab-4.demo-tab:after {
+            background-position: -245px -377px;
+            
+        }
+
+        .demo-tab-5.demo-tab:after {
+            background-position: -127px -496px;
+        }
+
+        .demo-tab-6.demo-tab:after {
+            background-position: -245px -496px;
+        }
+
+        .demo-tab-7.demo-tab:after {
+            background-position: -363px -377px;
+        }
+    }
+
+    @include mobile {
+
+        .demo-tab-1.demo-tab:after {
+            background-position: -16px -388px;
+        }
+
+        .demo-tab-2.demo-tab:after {
+            background-position: -16px -506px;
+        }
+
+        .demo-tab-3.demo-tab:after {
+            background-position: -252px -388px;            
+        }
+
+        .demo-tab-4.demo-tab:after {
+
+            background-position: -134px -388px;
+        }
+
+        .demo-tab-5.demo-tab:after {
+            background-position: -137px -506px;
+        }
+
+        .demo-tab-6.demo-tab:after {
+            background-position: -254px -506px;
+        }
+
+        .demo-tab-7.demo-tab:after {
+            background-position: -372px -388px;
+        }
+    }
+
+    @include mobile-min {
+
+        .demo-tab-1.demo-tab:after {
+            background-position: -27px -399px;
+        }
+
+        .demo-tab-2.demo-tab:after {
+            background-position: -27px -518px;
+        }
+
+        .demo-tab-3.demo-tab:after {
+            background-position: -266px -399px;
+        }
+
+        .demo-tab-4.demo-tab:after {
+
+            background-position: -144px -399px;
+        }
+
+        .demo-tab-5.demo-tab:after {
+            background-position: -148px -518px;
+        }
+
+        .demo-tab-6.demo-tab:after {
+            background-position: -264px -518px;
+        }
+
+        .demo-tab-7.demo-tab:after {
+            background-position: -385px -399px;
+        }
     }
 }
 
@@ -335,16 +576,18 @@ $tabDur: 0.5s;
     height: 550px;
     bottom: 0;
 
+    height: 75vh;
+
     .section-4 & {
-        right: -20px;
+        right: 50px;
 
         @include mid {
-            right: -50px;
+            right: -30px;
         }
     }
 
     .section-5 & {
-        left: -20px;
+        left: 50px;
 
         @media screen and (max-width: 1280px) and (min-width: 1025px) {
             left: -50px;
@@ -361,7 +604,7 @@ $tabDur: 0.5s;
     @include transform(translateY(25px));
     margin: auto;
     width: 468px;
-    height: 100%;
+    height: 200%;
     background: url(../images/screen-1.png) no-repeat;
     background-size: 100% auto;
 
@@ -381,9 +624,16 @@ $tabDur: 0.5s;
     opacity: 0;
     position: absolute;
     width: 375px;
-    height: 414px;
+    //height: 414px;
     top: 115px;
     left: 48px;
+    background-color: #666;
+
+    height: 667px;
+
+    video {
+        width: 100%;
+    }
 
     &.current {
         opacity: 1;
@@ -395,7 +645,86 @@ $tabDur: 0.5s;
     }
 }
 
-@media screen and (min-width: 1024px) and (max-height: 600px){
+
+
+
+
+
+div.section-4 .demo-column, div.section-5 .demo-column {
+    padding-bottom: 80px;
+
+    .help-block {
+        top: 555px;
+
+        .help-arrow {
+            @include transform(rotate(250deg) scaleX(-1));
+            left: -80px;
+            top: -23px;
+        }
+    }
+}
+
+div.section-4 .demo-column {
+
+    .help-block {
+        left: 130px;
+    }
+}
+
+div.section-5 .demo-column {
+
+    .help-block {
+        right: 0;
+        left: auto;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-height: 800px){
+
+    .screen {
+        height: 95vh;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-height: 700px){
+
+    .screen {
+        height: 89vh;
+
+        .screen-inner {
+            width: 380px;
+        }
+    }
+
+    .tab-content {
+        width: 305px;
+        left: 37px;
+        top: 80px;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-height: 700px){
+    
+    .demo-tabs {
+
+        .demo-tab-wrap {
+            margin-bottom: 45px;
+        }
+
+        .demo-tab {
+
+            > span {
+                top: 135px;
+            }
+
+            i {
+                height: 20px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-height: 600px){
 
     .demo-column {
         @include vertCenterRemove;
@@ -413,7 +742,6 @@ $tabDur: 0.5s;
             margin-bottom: 45px;
 
             .demo-tab > span {
-                top: 145px;
                 font-size: 14px;
             }
         }
@@ -427,16 +755,20 @@ $tabDur: 0.5s;
         width: auto;
         padding-top: 25px;
 
-        @include port {
-            padding-top: 50px;
-        }
-
         .help-block {
             display: none;
         }
 
-        .text-block {
-            width: 550px;
+        p {
+            display: none;
+        }
+
+        @include port {
+            padding-top: 50px;
+
+            .text-block {
+                width: auto;
+            }
         }
     }   
 
@@ -444,12 +776,13 @@ $tabDur: 0.5s;
         padding-bottom: 60px;
 
         .slick-slide {
-            width: 138px !important;
+            width: 122px !important;
             padding: 0 0 0 20px;
         }
     }
 
     .demo-tabs {
+        padding-top: 0;
         margin-left: -25px;
         margin-right: -25px;
 
@@ -459,10 +792,28 @@ $tabDur: 0.5s;
 
         .demo-tab {
             @include transform(translateY(0));
-        }
+            width: 102px !important;
+            height: 102px;
 
-        @include port {
-            padding-top: 50px;
+            &:after {
+                @include transform(scale(0.9));
+            }
+
+            .circle-pie {
+                top: -8px;
+            }
+
+            i {
+                top: 91px;
+            }
+
+            > span {
+                top: 134px;
+            }
+
+            .btn-circle {
+                @include transform(scale(0.9));
+            }
         }
 
         @media (min-height: 1365px){
@@ -491,34 +842,83 @@ $tabDur: 0.5s;
     }
 
     .screen {
-        @include transform(translateX(-50%) scale(0.8));
+        @include transform(translateX(-50%) scale(0.7));
         right: auto !important;
         left: 50%;
         height: 60vh;
+        bottom: auto;
+        //top: 305px;
+        top: 260px;
 
-        transform-origin: center bottom;
-        -webkit-transform-origin: center bottom;
-        -ms-transform-origin: center bottom;
+        transform-origin: center top;
+        -webkit-transform-origin: center top;
+        -ms-transform-origin: center top;
 
-        @include port { 
-            @include transform(translateX(-50%) scale(1));
-            height: 55vh;
+        @include port {
+            @include transform(translateX(0) scale(1));
+            top: 295px;
+            left: -15px !important;
+            right: auto !important;
+            //height: 55vh;
+        }
+
+        @media (max-width: 980px) and (orientation: landscape) {
+            @include transform(translateX(-50%) scale(0.6));
+            top: 300px;
         }
     }
 }        
 
-@include mobile {
+// Ipad Pro Portrait
+@media (min-width: 1024px) and (orientation: portrait){
+
+    .section-4, .section-5 {
+        
+        .help-block {
+            display: none;
+        }
+    }
 
     .demo-column {
-        padding-top: 35px;
+        width: 550px;
+        margin: auto;
+    }
+
+    .demo-tabs {
+        margin-left: 0;
+
+        .demo-tab {
+            margin: 0 35px 80px 0;
+        }
+    }
+
+    .screen {
+        @include transform(translateX(-50%) scale(1));
+        top: 510px;
+        left: 50% !important;
+    }
+}
+
+@include mobile {
+
+    // .video {
+    //     display: none;
+    // }
+
+    .demo-column {
+        padding-top: 25px;
 
         .text-block {
             width: auto;
-            margin-right: -25px;
+            margin-right: 0;
         }
 
-         @include land {
+        @include land {
             padding-top: 15px;
+
+            p {
+                display: none;
+            }
 
             .text-block {
                 width: 65%;
@@ -526,13 +926,31 @@ $tabDur: 0.5s;
         }
     }
 
+    .slick-list .slick-slide {
+        width: 108px !important;
+        padding: 0 0 0 23px;
+    }
+
     .demo-tabs {
         padding-top: 0;
 
         .demo-tab {
+            width: 85px !important;
+            height: 85px;
+
+            &:after {
+                @include transform(scale(0.6));
+            }
 
             > i, > span, .circle-pie {
                 display: none;
+            }
+
+            .btn-circle {
+                @include transform(scale(0.9));
+                transform-origin: left top;
+                -webkit-transform-origin: left top;
+                -ms-transform-origin: left top;
             }
         }
 
@@ -546,8 +964,9 @@ $tabDur: 0.5s;
     }
 
     .screen {
-        @include transform(translateX(0) scale(0.65));
-        top: 410px;
+        @include transform(translateX(0) scale(0.57));
+        //top: 300px;
+        top: 204px;
         bottom: auto;
         right: auto !important;
         left: -15px !important;
@@ -559,7 +978,7 @@ $tabDur: 0.5s;
 
         @include land {
             @include transform(translateX(0) scale(0.5));
-            top: 107px;
+            top: -45px;
             left: auto !important;
             right: 0 !important;
 
@@ -568,7 +987,7 @@ $tabDur: 0.5s;
             -ms-transform-origin: right top;
 
             .screen-inner {
-                height: 200%;
+                height: 250%;
             }
         }
     }
@@ -576,9 +995,28 @@ $tabDur: 0.5s;
 
 @include mobile-min {
 
+    .slick-list .slick-slide {
+        width: 73px !important;
+        padding: 0 0 0 13px;
+    }
+
+    .demo-tabs .demo-tab {
+        width: 60px !important;
+        height: 60px;
+
+        .btn-circle {
+            @include transform(scale(0.64));
+        }
+
+        &:after {
+            @include transform(scale(0.5));
+        }
+    }
+
     .screen {
-        @include transform(translateX(0) scale(0.65));
-        top: 360px;
+        @include transform(translateX(0) scale(0.43));
+        //top: 226px;
+        top: 155px;
         bottom: auto;
         left: -15px;
         height: 100%;
@@ -589,6 +1027,177 @@ $tabDur: 0.5s;
     }
 }
 
+@media (max-height: 600px) and (max-width: 767px) and (orientation: landscape){
+
+    .section-4, .section-5 {
+
+        .title {
+            margin-bottom: 0;
+        }
+
+        .help-block-swipe {
+            display: block !important;
+            left: 0;
+            top: 185px;
+
+            .help-text {
+                text-align: left;
+            }
+
+            .help-arrow {
+                @include transform(rotate(100deg));
+                right: auto;
+                left: 0px;
+            }
+        }
+    }
+
+    .screen {
+        top: 20px;
+    }
+}
+
+@media (max-height: 375px) and (max-width: 767px) and (orientation: landscape){
+    
+    .section-4, .section-5 {
+
+        .help-block-swipe {
+            top: 130px;
+            padding-top: 70px;
+
+            .help-text {
+                font-size: 15px;
+                line-height: 18px;
+            }
+
+            .help-arrow {
+                @include transform(scale(0.6) rotate(100deg));
+                @include origin(left, bottom);
+                left: 7px;
+            }
+        }   
+    }
+}
+
+@media (max-height: 300px) and (orientation: landscape){
+
+    .slick-list .slick-slide {
+        width: 73px !important;
+        padding: 0 0 0 13px;
+    }
+
+    .demo-tabs .demo-tab {
+        width: 60px !important;
+        height: 60px;
+
+        .btn-circle {
+            @include transform(scale(0.64));
+        }
+
+        &:after {
+            @include transform(scale(0.5));
+        }
+    }
+
+    .screen {
+        @include transform(translateX(0) scale(0.4));
+        height: 200%;
+        top: -40px;
+    }
+
+    .section-4, .section-5 {
+
+        .title {
+            margin-left: -10px;
+        }
+
+        .text-block {
+            margin-bottom: 10px !important;
+        }
+
+        .help-block-swipe {
+            padding-top: 68px;
+            top: 88px;
+            left: -10px;
+
+            .help-text {
+                font-size: 14px;
+                line-height: 17px;
+            }
+        }  
+    }     
+
+    .section-4 {
+
+        .demo-tab-1.demo-tab:after {
+            background-position: -27px -159px;
+        }
+
+        .demo-tab-2.demo-tab:after {
+            background-position: -145px -159px;
+        }
+
+        .demo-tab-3.demo-tab:after {
+            background-position: -265px -160px;
+        }
+
+        .demo-tab-4.demo-tab:after {
+            background-position: -382px -161px;
+        }
+
+        .demo-tab-5.demo-tab:after {
+            background-position: -28px -282px;
+        }
+
+        .demo-tab-6.demo-tab:after {
+            background-position: -147px -282px;
+        }
+
+        .demo-tab-7.demo-tab:after {
+            background-position: -266px -281px;
+        }
+    }
+
+    .section-5 {
+
+        .demo-tab-1.demo-tab:after {
+            background-position: -27px -399px;
+        }
+
+        .demo-tab-2.demo-tab:after {
+            background-position: -144px -399px;
+        }
+
+        .demo-tab-3.demo-tab:after {
+            background-position: -266px -399px;
+        }
+
+        .demo-tab-4.demo-tab:after {
+            background-position: -385px -399px;
+        }
+
+        .demo-tab-5.demo-tab:after {
+            background-position: -27px -518px;
+        }
+
+        .demo-tab-6.demo-tab:after {
+            background-position: -148px -518px;
+        }
+
+        .demo-tab-7.demo-tab:after {
+            background-position: -264px -518px;
+        }
+    }
+}
+
+
+// @media (max-width: 359px){
+
+//     .slick-list .slick-slide {
+//         width: 73px !important;
+//         padding: 0 0 0 13px;
+//     }  
+// }
 
 @keyframes circle-chart-fill {
     to { stroke-dasharray: 0 100; }

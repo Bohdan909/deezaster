@@ -3,13 +3,16 @@
     Navigation
     ------------------- */   
 
+$pointShad: 2px 2px 12px 0 rgba(0, 0, 0, 0.2);
+
 .navigation {
     @include socket;
     @include transform(translateX(-50%));
-    @extend .trans;
+    @include transition(opacity, 0.4s, linear);
+    @include delay(0.35s);
     position: fixed;
     bottom: 3.5vh;
-    padding: 0 3.5%;
+    padding: 5px 3.5% 0;
     left: 50%;
     height: auto;
     z-index: 900;
@@ -31,7 +34,7 @@
         content: "........................................................................................................................";
         display: block;
         position: absolute;
-        top: -12px;
+        top: -7px;
         left: -13px;
         font-size: 28px;
         letter-spacing: 2.9px;
@@ -43,7 +46,7 @@
     }
 
     ul {
-        @include flex(space-between);        
+        @include flex(space-between);    
         
         li {
             @extend .trans;
@@ -56,6 +59,7 @@
             width: 20px;
             text-align: center;
             font-family: $fontBold;
+
 
             &:hover {
                 @include color-w(0.85);
@@ -75,10 +79,20 @@
                 @include border-rad(50%);
                 @include transform(scale(0.45));
                 transform-origin: center center;
+                -webkit-transform-origin: center center;
+                -ms-transform-origin: center center;
 
                 width: 19px; 
                 height: 19px;
                 background-color: #fff;
+            }
+
+            &:after {
+                @extend .ps;
+                left: -10px;
+                top: -10px;
+                right: -10px;
+                bottom: -10px;
             }
         }
     }

@@ -23,11 +23,7 @@
     background-image: -ms-linear-gradient( 16deg, rgb(222,166,101) 0%, rgb(224,205,103) 100%);
 
     .socket {
-        left: -50px;
-
-        @include mid {
-            left: 0;
-        }
+        left: 0;
     }
 
     .figure {
@@ -53,20 +49,23 @@
         }
 
         @include mobile {
-            width: 250px;
-            right: -10px;
-            top: 120px;
+            display: none;
         }
     }
 
     .person {
-        @include transition(all, 0.6s, linear);
+        @include transition(transform, 0.6s, linear);
         @include transform(scaleY(1.02) translateY(15px));
+        @include delay(0s);
+        display: block;
         height: 75vh;
         top: 7vh;
         left: 780px;
         z-index: 1;
-        
+
+        &.person-joyful {
+            display: none;
+        }
 
         @include mid {
             left: 730px;
@@ -83,19 +82,74 @@
                 height: 53vh;
 
                 @media (max-width: 990px){
-                    display: none;
+                    display: none !important;
                 }   
             }
         }
 
-        @media (max-width: 900px) and (orientation: landscape) {
-            display: none;
+        @include mobile {
+
+            @include land {
+                right: -30px;
+            }
+        }
+
+        @media (max-width: 500px){
+
+            @include land {
+                right: 4vw;
+            }
         }
 
     } // END PERSON
 
+
     &.active .person, &.prev .person { // LOADED
         @include transform(scaleY(1) translateY(0));
+    }
+
+    .btn-circle {
+        position: absolute;
+        top: -40px;
+        left: 16px;
+        display: none;
+
+        span {
+            color: #dfbc66;
+        }
+
+        @media screen and (min-width: 1025px) and (max-height: 650px){
+            // top: 262px;
+            // left: 420px;
+        }
+
+        @include tablet {
+            left: 0;
+
+            @include port {
+                top: -50px;
+            }
+        }
+
+        @include mobile {
+            top: -18px;
+            right: 0;
+            left: calc(100vw - 145px);
+            left: -webkit-calc(100vw - 145px);
+
+            @include land {
+                @include transform(scale(0.7));
+                @include origin(left, top);
+                left: 0;
+                top: -75px;
+            }
+        }
+
+
+        @include mobile-min {
+            @include transform(scale(0.87));
+            top: -20px;
+        }
     }
 
     .help-block {
@@ -119,24 +173,69 @@
 
         @include tablet {
             left: 480px;
-            top: 300px;
 
             @include port {
-                @include helpStat();
+                top: 375px;
             }
         }
 
         @include mobile {
+            @include helpStat;
+            position: relative;
+            height: 92px;
+            margin-bottom: 0;
+
+            .help-text {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+
+            .help-text.to-show {
+                width: 200px;
+            }
+
+            .help-arrow {
+                @include transform(scaleX(-1) rotate(-60deg));
+                top: 30px;
+            }
 
             @include land {
-                display: none;
+                position: absolute;
+                left: 240px;
+                top: 135px;
+
+                .help-text {
+                    font-size: 14px;
+                    line-height: 19px;
+                }
+
+                .help-arrow {
+                    @include transform(scale(0.7));
+                    top: -35px;
+                    left: -20px;
+                }
             }
         }
+
+        @include mobile-min {
+            height: 75px;
+
+            .help-arrow {
+                top: 20px;
+            }
+        }
+
+        // div.hide {
+        //     @include delay(0s);
+        //     opacity: 0 !important;
+        // }
 
     } // END HELP
 }
 
 .help-block {
+    @extend .trans; 
     position: absolute;
     z-index: 1;
 
@@ -147,7 +246,8 @@
         position: absolute;
         width: 60px;
         height: 40px;
-        background: url(../images/help-arrow.png) no-repeat;
+        background: url(../images/arrow.svg) no-repeat;
+        background-size: 100% auto;
 
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
@@ -155,6 +255,11 @@
         .active & {
             -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        @include mobile {
+            width: 50px;
+            height: 33px;
         }
     }
 
@@ -165,6 +270,27 @@
         font-size: 18px;
         line-height: 32px;
         font-family: $fontIta;
+
+        @include mobile {
+            line-height: 25px;
+        }
+
+        @include mobile-min {
+            font-size: 15px;
+            line-height: 22px;
+        }
+
+        &.hide {
+            @include animation(fadeOut, 0.4s, linear);
+        }
+
+        &.to-show {
+            display: none;
+
+            @media (min-width: 767px){
+                display: none !important;
+            }
+        }
 
         .active &, .prev & {
             @include delay(0.8s);
@@ -181,6 +307,17 @@
 
     .text-block {
         position: static;
+
+        @include tablet {
+
+            @include port {
+                margin-bottom: 80px;
+            }
+        }
+
+        @include mobile {
+            margin-bottom: 0;
+        }
     }
 
     @media screen and (min-width: 1025px) and (max-height: 650px){
@@ -209,10 +346,14 @@
             margin: 0;
             padding-top: 15px;
 
+            p {
+                display: none;
+            }
+
             .game-demo {
-                transform: scale(0.5) !important;
-                -webkit-transform: scale(0.5) !important;
-                -ms-transform: scale(0.5) !important;
+                transform: scale(0.42) !important;
+                -webkit-transform: scale(0.42) !important;
+                -ms-transform: scale(0.42) !important;
             }
         }
     }
@@ -248,9 +389,9 @@
         will-change: transform; 
         background-repeat: no-repeat;
 
-        animation-fill-mode: forwards;
-        -ms-animation-fill-mode: forwards;
-        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards !important;
+        -ms-animation-fill-mode: forwards !important;
+        -webkit-animation-fill-mode: forwards !important;
 
         &.alight {
             opacity: 1;
@@ -294,7 +435,7 @@
 }
 
 .cube-vis {
-    @include transform(translateY(22px));
+    //@include transform(translateY(22px));
 
     &.cube-1 {
         @include delay(0.3s);
@@ -310,6 +451,10 @@
 
     &.cube-animate-2 {
         @include delay(0.55s);
+
+        img {
+            @include scale(1.06);
+        }
     }
 
     &.cube-4 {
@@ -324,9 +469,9 @@
         @include delay(0.7s);
     }
 
-    .active &, .prev & { // LOADED
-        @include transform(translateY(0));
-    }
+    // .active &, .prev & { // LOADED
+    //     @include transform(translateY(0));
+    // }
 }
 
 .animate {

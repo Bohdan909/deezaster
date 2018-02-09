@@ -13,7 +13,7 @@ html { @include border-box; }
 *, *:before, *:after { box-sizing: inherit; }
 
 html, body {
-    min-width: 375px;
+    min-width: 320px;
     width: 100%;
     height: 100%;
     text-align: center;
@@ -29,46 +29,81 @@ html, body {
     @include socket;
 }
 
+.show-mob {
+    display: none;
+}
+
+
+@include tablet {
+    
+    .hide-tablet {
+        display: none !important;
+    }
+}
+
+@include mobile {
+
+    .hide-mob {
+        display: none !important;
+    }
+
+    .show-mob {
+        display: block !important;
+    }
+
+    span.show-mob {
+        display: inline !important; 
+    }
+}
+
+@include mobile-min {
+
+    .hide-mob-min {
+        display: none !important;
+    }
+}
+
 
 /* --------------------
     Section Layout
     ------------------- */   
 
 
-////////////// Page Scroll Plaguin //////////////////
+////////////// Page Scroll Plaguin 
 
 .page-pagination {
-  display: none;
-
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  z-index: 5;
-  margin-top: -75px
+    display: none;
 }
 
-.page-pagination>a {
-  display: block;
-  width: 10px;
-  height: 10px;
-  border: 1px solid #000;
-  margin: 10px;
-  border-radius: 50%
-}
+// .page-pagination {
+//   position: absolute;
+//   right: 10px;
+//   top: 50%;
+//   z-index: 5;
+//   margin-top: -75px
+// }
 
-.page-pagination>a.active { background: #000 }
+// .page-pagination>a {
+//   display: block;
+//   width: 10px;
+//   height: 10px;
+//   border: 1px solid #000;
+//   margin: 10px;
+//   border-radius: 50%
+// }
 
-////////////////////////////////
+// .page-pagination>a.active { background: #000 }
+
 
 .sections {
     position: relative;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 .section {
     position: absolute;
-    display: block !important;
     top: 0;
     left: 0;
     width: 100%;
@@ -77,44 +112,94 @@ html, body {
     will-change: transform;
     background-position: 50% 50%;
     background-repeat: no-repeat;
-
-    -webkit-clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
-    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+    transform: translateZ(0);
+    opacity: 0;
 
     transition: all 0.7s cubic-bezier(.55,.085,0,.99) 0.8s;
     -webkit-transition: all 0.7s cubic-bezier(.55,.085,0,.99) 0.8s;
     -ms-transition: all 0.7s cubic-bezier(.55,.085,0,.99) 0.8s;
 
     &.active {
-        transition-delay: 0.0s !important;
-        
-        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        @include delay(0s);
+        opacity: 1;
+        z-index: 1;
     }
 
-    &.loaded, &.active { // LOADED
-        z-index: 1;
-        
+    &.active:not(.section-top), &.loaded {
+
         .btn-circle:after {
-            @include delay(0.3s);
+            @include delay(0.1s);
             @include transform(rotate(0deg) scale(1));
         }
     }
 
-    &.prev .btn-circle:after {
+    &.prev:not(.section-top) .btn-circle:after {
         @include transform(rotate(0deg) scale(1));
     }
-
-    .pp-tableCell {
-        display: block !important;
-    }
-    // position: static;
-    // height: 100vh;
 }    
+
+
+@include ie10 {
+
+    .section {
+        opacity: 0;
+
+        transition: opacity 0.5s cubic-bezier(.55,.085,0,.99) 0s;
+        -webkit-transition: opacity 0.5s cubic-bezier(.55,.085,0,.99) 0s;
+        -ms-transition: opacity 0.5s cubic-bezier(.55,.085,0,.99) 0s;
+
+        &.active {
+            opacity: 1;
+        }
+    }    
+}
+
+
+
+@supports (-ms-ime-align:auto) {
+
+    .section {
+        opacity: 0;
+
+        &.active {
+            opacity: 1;
+        }
+    }    
+}
+
+
+.svgclippaths {
+
+    .section {
+        -webkit-clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+        clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+        
+        &.active {
+            -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+    }
+}
+
 
 .person {
     @include delay(0.3s);
     position: absolute;
+
+    @include mobile {
+
+        @include land {
+            width: auto !important;
+            height: 300px !important;
+            top: 50% !important;
+            margin-top: -150px !important;
+        }
+    }
+
+    @media (max-height: 400px) and (orientation: landscape){
+        height: 200px !important;
+        margin-top: -100px !important;
+    }
 }
 
 .text-block {
@@ -145,11 +230,11 @@ html, body {
         left: 0 !important;
 
         .title {
-            margin-right: 67px;
+            margin-right: 15px;
         }
     }
 
-    div.active.section &, div.prev.section & { // LOADED
+    div.active.section:not(.section-top) &, div.prev.section:not(.section-top) & { // LOADED
 
         .title, p {
             @include transform(translateY(0px));
@@ -171,6 +256,7 @@ html, body {
 
     span {
         position: relative;
+        display: block;
         z-index: 1;
         line-height: 113px;
         font-size: 18px;
@@ -178,26 +264,238 @@ html, body {
         font-family: $fontBold;
     }
 
+    img {
+        @include origin(center, center);
+    }
+
     &:after {
         @include transform(rotate(-70deg) scale(0.8));
-        @include transition(transform, 0.6s, ease-in);
+        @include transition(transform, 0.65s, ease-in);
         @extend .ps;
         left: 0;
         top: 0;
         width: 100%;
         height: 100%;
-        background: url(../images/btn-circle.png) no-repeat;
+        background: url(../images/btn-circle.svg) no-repeat;
+        background-size: 100% auto;
     }
 
-    .loaded &:hover:after, .active &:hover:after {
-        @include transform(rotate(-70deg) scale(0.8));
-        transition: transform 0.5s ease-in-out 0s !important;
-        -webkit-transition: -webkit-transform 0.5s ease-in-out 0s !important;
-        -ms-transition: -ms-transform 0.5s ease-in-out 0s !important;
+    &.btn-arrow {
+
+        img {
+            @include transform(translateX(-50%) translateY(-50%) rotate(-120deg));
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            opacity: 0;
+        }
+
+        &.hover {
+
+            span {
+                @include animation(moreIn, 0.5s, ease-in-out);
+            }
+
+            img {
+                @include animation(moreArrowIn, 0.25s, ease-in-out);
+                animation-delay: 0.4s;
+                -webkit-animation-delay: 0.4s;
+                -ms-animation-delay: 0.4s;
+            }
+            
+        }
+
+        &.unhover {
+
+            span {
+                @include animation(moreOut, 0.7s, ease-in-out);
+            }
+
+            img {
+                @include animation(moreArrowOut, 0.25s, ease-in-out);
+            }
+        }
+    }
+
+    @include mobile {
+        width: 95px;
+        height: 95px;
+
+        span {
+            line-height: 97px;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
     }
 }
 
 
+.no-touchevents {
+
+    div.section.loaded .btn-circle:hover:after,
+    div.section.active .btn-circle:hover:after {
+        @include transform(rotate(-70deg) scale(0.8));
+        transition: transform 0.72s ease-in-out 0s !important;
+        -webkit-transition: -webkit-transform 0.72s ease-in-out 0s !important;
+        -ms-transition: -ms-transform 0.72s ease-in-out 0s !important;
+    }
+}
+
+@keyframes moreIn {
+    0% {
+        @include rot(0deg);
+        opacity: 1;
+    }
+    100% {
+        @include rot(180deg);
+        opacity: 0;
+    }
+}
+
+@keyframes moreArrowIn {
+    0% {
+        @include transform(translateX(-50%) translateY(-50%) rotate(-120deg));
+        opacity: 0;
+    }
+    25% {
+        @include transform(translateX(-50%) translateY(-50%) rotate(-90deg));
+        opacity: 1;
+    }
+    50% {
+        @include transform(translateX(-50%) translateY(-50%) rotate(-60deg));
+        opacity: 1;
+    }
+    100% {
+        @include transform(translateX(-50%) translateY(-50%) rotate(0deg));
+        opacity: 1;
+    }
+}
+
+@keyframes moreOut {
+    0% {
+        @include rot(180deg);
+        opacity: 0;
+    }
+    25% {
+        @include rot(180deg);
+        opacity: 0;
+    }
+    100% {
+        @include rot(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes moreArrowOut {
+    0% {
+        @include transform(translateX(-50%) translateY(-50%) rotate(0deg));
+        opacity: 1;
+    }
+    50% {
+        @include transform(translateX(-50%) translateY(-50%) rotate(-60deg));
+        opacity: 1;
+    }
+    100% {
+        @include transform(translateX(-50%) translateY(-50%) rotate(-120deg));
+        opacity: 0;
+    }
+}
+
+$popDur: 0.25s;
+
+.explosion {
+    position: absolute; 
+    z-index: 100;
+    width: 100px;
+    height: 100px;
+    pointer-events: none; 
+
+    .particle {
+        position: absolute; 
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -ms-border-radius: 50%;
+        animation: pop $popDur reverse forwards; 
+        -webkit-animation: pop $popDur reverse forwards; 
+        -ms-animation: pop $popDur reverse forwards; 
+
+        box-shadow: 0 0 60px 20px rgba(255,255,255,0.1);
+        -webkit-box-shadow: 0 0 60px 20px rgba(255,255,255,0.1);
+        opacity: 0.5 !important;
+
+        &:nth-child(odd) {
+            width: 7px;
+            height: 7px;
+        }
+
+        &:nth-child(3n) {
+            width: 10px;
+            height: 10px;
+        }
+
+        &:nth-child(5n) {
+            width: 4px;
+            height: 4px;
+        }
+    }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+  }
+  to {
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes pop {
+  from {
+    opacity: 0;
+  }
+  to {
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+  }
+}
+
+body {
+    display: none;
+
+    &.page-loaded {
+        display: block;
+    }
+}
+
+.preloader {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    display: none;
+
+    .page-loaded & {
+        @include animation(fadeOut, 0.3s, linear);
+    }
+}
+
+// .navigation-char-wrap {
+//     display: block !important;
+// }
+
+
+// .title {
+//     color: #000;
+// }
 
 @import "nav";
 
@@ -212,3 +510,5 @@ html, body {
 @import "section-6";
 
 @import "section-final";
+
+@import "retina";

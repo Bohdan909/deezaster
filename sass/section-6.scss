@@ -6,18 +6,16 @@
     ------------------- */  
 
 .navigation-char-wrap {
-    @include transition(opacity, 0.2s, linear);
-    @include delay(0.1s);
+    //@include transition(opacity, 0.2s, linear);
+    //@include delay(0.1s);
     @include charSocket;
     @include transform(translateX(-50%));
     position: absolute;
     left: 50%;
     top: 0;
-    opacity: 0;
     z-index: 11;
     height: auto;
-
-    // display: none;
+    display: none;
 
     &.show {
         opacity: 1;
@@ -48,6 +46,11 @@
         top: auto;
         bottom: 0;
     }
+
+    @include mobile-min {
+        @include scale(0.8);
+        @include origin(left, bottom);
+    }
 }
 
 .navigation-char {
@@ -66,6 +69,10 @@
         text-transform: uppercase;
         font-family: $fontBold;
         white-space: nowrap;
+
+        @media screen and (min-width: 1025px) and (max-height: 700px){
+            padding-right: 45px;
+        }
 
         span {
             @include transition(all, 0.3s, ease-out);
@@ -89,6 +96,14 @@
             height: 3px;
             width: 34px;
             background: #ecf334;
+
+            @media screen and (min-width: 1025px) and (max-height: 700px){
+                width: 20px;
+            }
+        }
+
+        b {
+            font-weight: normal;
         }
 
         &:before {
@@ -148,7 +163,11 @@
         left: 0;
 
         @include land {
-            bottom: 10px;
+            @include transform(scale(0.65));
+            bottom: 5px;
+            transform-origin: left bottom;
+            -webkit-transform-origin: left bottom;
+            -ms-transform-origin: left bottom;
         }
 
         li {
@@ -159,6 +178,10 @@
             &:before {
                 right: auto;
                 left: 0;
+            }
+
+            &:hover:before {
+                @include transform(scale(1));
             }
 
             .circle-pie {
@@ -193,10 +216,10 @@
     Characters
     ------------------- */  
 
-.character-1 {
-   background-image: -moz-linear-gradient( 16deg, rgb(48,117,50) 0%, rgb(48,122,59) 100%);
-   background-image: -webkit-linear-gradient( 16deg, rgb(48,117,50) 0%, rgb(48,122,59) 100%);
-   background-image: -ms-linear-gradient( 16deg, rgb(48,117,50) 0%, rgb(48,122,59) 100%);
+.character-4 {
+    background-image: -moz-linear-gradient( 16deg, rgb(48,117,50) 0%, rgb(48,122,59) 100%);
+    background-image: -webkit-linear-gradient( 16deg, rgb(48,117,50) 0%, rgb(48,122,59) 100%);
+    background-image: -ms-linear-gradient( 16deg, rgb(48,117,50) 0%, rgb(48,122,59) 100%);
 
     .character-image {
         height: 104vh;
@@ -224,7 +247,7 @@
 
         .character-image {
             top: 7vh;
-            left: 60%;
+            left: 68%;
             height: 87vh;
         }
     }
@@ -232,15 +255,19 @@
     @include tablet {
 
         .character-image {
-            right: -10%;
-            top: 12vh;
-            height: 75vh;
+            right: 0;
+            top: 22vh;
+            height: 71vh;
 
             @include land {
-                right: 5%;
-                top: 5vh;
+                right: 11%;
+                top: 7vh;
                 height: 90vh;
             }
+        }
+
+        .character-name {
+            left: 16%;
         }
     }
 
@@ -248,21 +275,28 @@
 
         .character-image {
             height: 73vh;
-            right: -70px;
-            bottom: -70px;
+            right: -2vw;
+            bottom: -30px;
+        }
+    }
+
+    @media (max-width: 500px){
+
+        .character-image {
+            height: 70vh;
 
             @include land {
-                height: 90vh;
-                right: 15%;
+                height: 77vh;
+                bottom: 0;
+                right: -5vw;
             }
         }
     }
 
-    @media (max-width: 550px){
+    @include mobile-min {
 
         .character-image {
-            height: 65vh;
-            right: -120px;
+            right: -5vw;
         }
     }
 }
@@ -296,8 +330,19 @@
 
     @include tablet {
 
+        .character-name {
+            left: 12%;
+
+            @include land {
+                left: 28%;
+            }
+        }
+
         .character-image {
-            right: 5%;
+            right: 12%;
+            top: auto;
+            bottom: 0;
+            height: 79vh;
 
             @include land {
                 right: 25%;
@@ -308,22 +353,16 @@
     @include mobile {
 
         .character-image {
-            height: 73vh;
+            height: 70vh;
             right: 0px;
             bottom: -50px;
-
-            @include land {
-                height: 100vh;
-                bottom: -15px;
-                right: 15%;
-            }
         }
     }
 
     @media (max-width: 550px){
 
         .character-image {
-            right: -60px;
+            right: 7vw;
         }
     }
 }
@@ -332,6 +371,14 @@
     background-image: -moz-linear-gradient( 16deg, rgb(51,65,90) 0%, rgb(92,110,150) 100%);
     background-image: -webkit-linear-gradient( 16deg, rgb(51,65,90) 0%, rgb(92,110,150) 100%);
     background-image: -ms-linear-gradient( 16deg, rgb(51,65,90) 0%, rgb(92,110,150) 100%);
+
+    .authorize-block {  
+        top: 11vh;
+
+        // p {
+        //     text-shadow: 1px 1px 2px #000;
+        // }
+    }
 
     .character-image {
         height: 87vh;
@@ -356,16 +403,25 @@
         .character-image {
             left: 54%;
         }
+
+
+        .character-desc p {
+            display: none;
+        }
+
+        .authorize-block p {
+            display: block;
+        }
     }
 
     @include tablet {
 
         .character-image {
-            height: 78vh;
-            right: 6%;
+            height: 73vh;
+            right: 10%;
 
             @include land {
-                height: 87vh;
+                height: 78vh;
                 right: 18%;
             }
         }
@@ -381,31 +437,22 @@
     @include mobile {
 
         .character-image {
-            height: 65vh;
-            right: -90px;
+            height: 60vh;
+            right: -5vw;
             bottom: -20px;
-
-            @include land {
-                height: 90vh;
-                bottom: -15px;
-                right: 15%;
-            }
-        }
-    }
-
-    @include mobile-min {
-
-        .character-image {
-            right: -20px;
         }
     }
 }
 
 
-.character-4 {
+.character-1 {
     background-image: -moz-linear-gradient( 16deg, rgb(108,24,31) 0%, rgb(145,33,36) 100%);
     background-image: -webkit-linear-gradient( 16deg, rgb(108,24,31) 0%, rgb(145,33,36) 100%);
     background-image: -ms-linear-gradient( 16deg, rgb(108,24,31) 0%, rgb(145,33,36) 100%);
+
+    .authorize-block p {
+        text-shadow: 1px 1px 1px rgba(0,0,0, 0.3);
+    }
 
     .character-image {
         height: 96vh;
@@ -430,18 +477,19 @@
         .character-image {
             left: 57%;
         }
+
     }
 
     @include tablet {
 
         .character-image {
-            height: 78vh;
-            right: 14%;
+            height: 76vh;
+            right: -2vw;
             bottom: -1vh;
 
             @include land {
                 height: 86vh;
-                right: 23%;
+                right: 23vw;
             }
         }
 
@@ -456,22 +504,17 @@
     @include mobile {
 
         .character-image {
-            height: 70vh;
-            right: -120px;
+            height: 66vh;
+            right: -5vw;
             bottom: -20px;
-
-            @include land {
-                height: 96vh;
-                right: 11%;
-            }
         }
     }
 
     @include mobile-min {
 
         .character-image {
-            height: 65vh;
-            right: -70px;
+            height: 70vh;
+            right: -5vw;
         }
     }
 }
@@ -495,11 +538,11 @@
     @include lg {
 
         .character-image {
-            left: 50%;
+            left: 58%;
         }
 
         .character-name {
-            left: 12%;
+            left: 5%;
         }
     }
 
@@ -518,7 +561,7 @@
     @include tablet {
 
         .character-image {
-            height: 78vh;
+            height: 76vh;
             right: -40%;
             bottom: -1vh;
 
@@ -543,13 +586,12 @@
     @include mobile {
 
         .character-image {
-            height: 70vh;
-            right: -290px;
-            bottom: -20px;
+            height: 64vh;
+            right: -48vw;
+            bottom: -5px;
 
             @include land {
-                height: 96vh;
-                right: -7%;
+                right: 20px !important;
             }
         }
     }
@@ -557,7 +599,7 @@
     @include mobile-min {
 
         .character-image {
-            right: -250px;
+            right: -45vw;
         }
     }
 }
@@ -580,11 +622,12 @@
 
 
 .character-image {
-    @include transform(scaleY(1.02) translateY(25px) translateX(-50%));
+    @include transform(scaleY(1.05) translateY(25px) translateX(-50%));
     position: absolute;
     z-index: 10;
     left: 50%;
     height: 100vh;
+    -webkit-backface-visibility: hidden;
 
     .active &, .prev & {
         @include transform(scaleY(1) translateY(0) translateX(-50%));
@@ -604,13 +647,20 @@
     .active &, .prev & {
         @include transform(translateY(0));
     }
+
+    @include ie10 {
+        @include transform(translateY(0));
+    }
 }
 
 .character-desc {
     position: absolute;
-    right: 0;
-    top: 15vh;
     width: 325px;
+    left: 0;
+    top: 28vh;
+
+    top: 24vh;
+    left: 50px;
 
     .title, p {
         @include transform(translateY(20px));
@@ -634,14 +684,31 @@
         right: auto;
         left: 0;
     }
+
+    @include mobile {
+        
+        @include land {
+            width: 280px;
+
+            .title {
+                font-size: 28px;
+                line-height: 35px;
+            }
+            
+            p {
+                font-size: 14px;
+            }
+        }
+    }
 }
 
 .authorize-block {
     @include transform(translateY(20px));
     position: absolute;
     width: 300px;
-    left: 0;
-    top: 28vh;
+    right: 30px;
+    top: 15vh;
+    z-index: 100;
 
     .active &, .prev & {
         @include transform(translateY(0));
@@ -715,11 +782,7 @@
         left: 0;
         z-index: 11;
 
-        .character-desc {
-            position: static;
-        }
-
-        .authorize-block {
+        .character-desc, .authorize-block {
             position: static;
         }
     }
@@ -730,7 +793,7 @@
     .character-name {
         font-size: 90px;
 
-        .character-1 & {
+        .character-4 & {
             left: 100px;
         }
 
@@ -776,8 +839,12 @@
 
 @include mobile {
 
+    .authorize-block {
+        width: auto;
+    }
+
     .character-text {
-        top: 35px;
+        top: 25px;
     }
 
     .character-name {
@@ -790,6 +857,18 @@
 
     @include land {
 
+        img.character-image {
+            top: 50% !important;
+            height: 300px !important;
+            margin-top: -150px;
+            right: 10vw !important;
+        }
+
+        .character-2 img.character-image {
+            right: 12vw;
+        }
+
+
         .character-text {
             top: 15px;
             right: 0;
@@ -800,7 +879,47 @@
                 right: 0;
                 top: 15px;
                 left: auto;
+
+                p {
+                    display: none !important;
+                }
             }
         }
     }
 }
+
+@media (max-width: 767px) and (max-height: 300px) and (orientation: landscape){
+
+    img.character-image {
+        height: 200px !important;
+        margin-top: -100px;
+        right: 130px !important;
+    }
+
+    .character-desc p {
+        display: none;
+    }
+}
+
+@media (max-width: 500px){
+
+    @include land {
+        
+        .authorize-block {
+            display: none;
+        }
+    }
+}
+
+@include mobile-min {
+
+    .character-desc {
+        width: auto;
+    }
+
+    .btn-authorize b {
+        font-size: 16px;
+        line-height: 25px;
+    }
+}
+

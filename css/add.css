@@ -1,0 +1,8 @@
+
+.authorize-block {
+  display: none;
+}
+
+.character-3 .authorize-block {
+  display: block;
+}

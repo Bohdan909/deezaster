@@ -85,7 +85,7 @@
             settings.beforeMove(preIndex, $pages.eq(preIndex));
             $pages.eq(preIndex).removeClass("active");
 
-            setTimeout( ()=> { 
+            setTimeout(function(){ 
                 $pages.eq(preIndex).removeClass("prev") 
             }, 800);
 
@@ -113,14 +113,12 @@
 
             // Characters Nav    
             if (nowIndex >= 5 && nowIndex < finIndex){
-               $char.show().addClass("show");
+               $char.delay(300).fadeIn(600);
                //$char.removeClass("hide");
                $charLi.eq(preIndex - 5).removeClass("active");
                $charLi.eq(nowIndex - 5).addClass("active");
             } else {
-               $char.removeClass("show").delay(400).queue(function(){
-                    $(this).hide(); 
-               });
+               $char.removeClass("show").fadeOut(250);
                //$char.addClass("hide");
                $charLi.removeClass("active");
             } 
@@ -133,7 +131,7 @@
 
         // Navigation Custom
         $navLi.on("click", function(){
-            let navIndex = $(this).index();
+            var navIndex = $(this).index();
 
             if (navIndex == 6){
                 moveTo(finIndex);
@@ -144,17 +142,17 @@
 
 
         $charLi.on("click", function(){
-            let navIndex = $(this).index() + 5;
+            var navIndex = $(this).index() + 5;
 
             moveTo(navIndex);
         });
 
         // Buttons To
-        let $btnTo = document.querySelectorAll(".btn-to");
+        var $btnTo = document.querySelectorAll(".btn-to");
 
-        $btnTo.forEach( (btn) => {
+        $btnTo.forEach( function(btn){
             btn.addEventListener("click", function() {
-                let target = this.getAttribute("data-to") - 1;
+                var target = this.getAttribute("data-to") - 1;
                 moveTo(target);
             });
         });
@@ -264,7 +262,7 @@
                     ev.preventDefault();
                     if (touches2 && touches2.length) {
                         var deltaY = touches2[0].pageY - startY;
-                        if (Math.abs(deltaY) >= 50) {
+                        if (Math.abs(deltaY) >= 100) {
                             initScroll(ev, deltaY);
                             $doc.off('.page-scroll .page-scroll-end');
                         }
@@ -312,3 +310,9 @@
         return false;
     }
 })(window.jQuery);
+
+
+(function(){
+    if ( typeof NodeList.prototype.forEach === "function" ) return false;
+    NodeList.prototype.forEach = Array.prototype.forEach;
+}());

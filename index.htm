@@ -16,12 +16,13 @@
 	</head>
 	
 	<body>
+		<div class="preloader"></div>
 		<div id="main">
 			
 			<div class="sections">
 
 				<!-- Section 1 -->
-				<div class="section section-top active prev">
+				<div class="section active section-top">
 					<div class="socket">
 
 						<div class="logo">
@@ -29,17 +30,27 @@
 						</div>
 
 						<img class="person" src="images/person-1.png" />
+						<img class="dragonfly" src="images/dragonfly.gif" />
 
 						<div class="text-block">
-							<div class="title">Hello, my name is Dee Zaster</div>
+							<div class="title">
+								Hi there, my name <br> is Dee Zaster!
+							</div>
 
 							<p>
-								Let me show you a whole new adventure story about how can I cope 
-								with the difficulties and reach goals.
+								I’m going on a spectacular, adventure <br>
+								filled with monsters and <br>
+								crazy obstacles
+							</p>
+
+							<p>
+								<span class="hide-mob"> 
+									Come join me!
+								</span>
 							</p>
 
 							<button data-to="2" class="btn-to btn-circle">
-								<span>Explore</span>
+								<span>LET’S GO</span>
 							</button>
 						</div>
 						
@@ -51,15 +62,17 @@
 					<div class="socket">
 
 						<div class="text-block">
-							<div class="title">First stop: Monster Island.</div>
+							<div class="title">First stop: <br> Monster Island.</div>
+							
+							<section>
+								<p>
+									My mentor, Lowden Clear, has sent me on a special mission: To collect as much treasure as possible. 
+								</p>
 
-							<p>
-								My mentor, Lowden Clear, has sent me on a special mission: To collect as much treasure as possible. 
-							</p>
-
-							<p>
-								But … can I do that all on my own?
-							</p>
+								<p>
+									But … can I do that all on my own?
+								</p>
+							</section>
 
 							<button data-to="3" class="btn-to btn-circle">
 								<span>help me!</span>
@@ -76,18 +89,29 @@
 						
 						<div class="game-demo-block">
 							<div class="text-block">
-								<div class="title">Help me to escape</div>
+								<div class="title">That’s not all.</div>
 
 								<p>
-									Help me to get the highest level and escape from the island. It’s very simple - just tap on simple color which match each other to gain new points and rate.
+									Once I collect the treasure, I must get to the highest level to escape from this island.  Will you help me? Match monsters of the same colour to gain points.
 								</p>
 							</div>
 
 							<div class="help-block">
-								<div class="help-arrow"></div>
-								<div class="help-text">
-									Just try it. <br>Click on the bright momenter
+								<div class="help-arrow to-hide"></div>
+								<span class="help-text to-hide">
+								    Try it. <br> Click on the bright monster to begin
+								</span>
+
+								<div class="help-text to-show">
+								    Congratulations <br>
+									with your first step! <br> 
+									Click on "More" now.
 								</div>
+
+								<button data-to="4" class="btn-to btn-arrow  btn-circle">
+									<span>More</span>
+									<img width="32" src="images/next-2.svg" alt="">
+								</button>
 							</div>
 
 							<div class="game-demo">
@@ -113,10 +137,10 @@
 									<div class="cube cube-5 cube-vis"></div>
 									<div class="cube cube-1 cube-vis"></div>
 									<div class="cube cube-3 cube-vis cube-animate-1 alight wanted">
-										<img src="images/cube-blue.png" alt="">
+										<img src="images/blue-2.gif" alt="">
 									</div>
 									<div class="cube cube-3 cube-vis cube-animate-2 alight wanted">
-										<img src="images/cube-blue.png" alt="">
+										<img src="images/blue-1.gif" alt="">
 									</div>
 									<div class="cube cube-1 cube-vis"></div>
 									<div class="cube cube-6 cube-vis"></div>
@@ -125,9 +149,12 @@
 									<div class="cube cube-1 cube-vis"></div>
 								</div>
 							</div>
+
+
 						</div>
 
-						<img class="person" src="images/person-3.png" />
+						<img class="person person-sad" src="images/person-3-start.png" />
+						<img class="person person-joyful" src="images/person-3.png" />
 					</div>
 
 					<img class="figure" src="images/section-3-f.png" alt="">
@@ -138,7 +165,12 @@
 					<div class="socket">
 						<div class="demo-column">
 							<div class="text-block">
-								<div class="title">Warning: It’s not going to be easy.</div>
+								<div class="title">
+									Warning: 
+									<span class="hide-mob">
+										It’s not going to be easy.
+									</span>
+								</div>
 								<p>
 									I will encounter various obstacles like trapping cages, tangling vines, ticking dynamites, and troublesome frogs etc.
 								</p>
@@ -231,8 +263,9 @@
 								</div>
 								<div class="demo-tab-wrap">
 									<div class="demo-tab">
-										<button data-to="5" class="btn-to btn-circle">
+										<button data-to="5" class="btn-to btn-arrow btn-circle">
 											<span>more</span>
+											<img width="32" src="images/next-1.svg" alt="">
 										</button>
 									</div>
 								</div>
@@ -243,7 +276,11 @@
 						<div class="screen">
 							<div class="screen-inner">
 								<div id="tab-1" class="tab-content current">
-									<img src="images/Mango.gif" alt="">
+									<!-- <img src="images/Mango.gif" alt=""> -->
+									<video loop autoplay>
+										<source src="video/Water Ring.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+										
+									</video>
 								</div>
 								<div id="tab-2" class="tab-content">
 									<img src="images/Fruit.gif" alt="">
@@ -265,6 +302,13 @@
 								</div>
 							</div>
 						</div>
+
+						<div class="help-block help-block-swipe">
+							<div class="help-arrow"></div>
+							<div class="help-text">
+								Feel <br> free  to <br> swipe 
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -273,7 +317,11 @@
 					<div class="socket">
 						<div class="demo-column">
 							<div class="text-block">
-								<div class="title">Luckily, I have cool superpowers.</div>
+								<div class="title">
+									<span class="hide-mob">Luckily, 
+									I have cool superpowers.</span>
+									<span class="show-mob">Superpowers:</span>
+								</div>
 								<p>
 									I will collect Special Items along the way. Fireballs, water rings, tornadoes and other combo attacks will be my weapons!
 								</p>
@@ -406,18 +454,17 @@
 				<!-- Character 1 -->
 				<div class="section character-1">
 					<div class="character-socket">
-
-						<img class="character-image" src="images/char-1.png" />
+						
+						<img class="character-image" src="images/char-4.png" />
 
 						<div class="character-name">
-							Theresa Green
+							Luna Trick
 						</div>
 						
 						<div class="character-text">
 							<div class="character-desc">
 								<div class="title">
-									And my new friends will <br> help me, too.
-
+									And my new friends <br> will help me, too.
 								</div>
 								<p>
 									I will meet awesome (and weird) folks who will support me in incredible ways.
@@ -427,12 +474,12 @@
 							<div class="authorize-block">
 								<a class="btn-authorize" href="">
 								    <span class="btn-circle">
-								    	<img src="images/ico-fb.png" alt="">
+								    	<img width="12" src="images/ico-fb.svg" alt="">
 								    </span>
 								    <b>authorize</b>
 							    </a>
 								<p>
-									To learn more about Theresa Green, log in to our Dee Zaster App using your Facebook account.
+									To learn more about Luna Trick, log in to our Dee Zaster App using your Facebook account.
 								</p>
 							</div>
 						</div>
@@ -464,7 +511,7 @@
 							<div class="authorize-block">
 								<a class="btn-authorize" href="">
 								    <span class="btn-circle">
-								    	<img src="images/ico-fb.png" alt="">
+								    	<img width="12" src="images/ico-fb.svg" alt="">
 								    </span>
 								    <b>authorize</b>
 							    </a>
@@ -498,14 +545,9 @@
 							</div>
 
 							<div class="authorize-block">
-								<a class="btn-authorize" href="">
-								    <span class="btn-circle">
-								    	<img src="images/ico-fb.png" alt="">
-								    </span>
-								    <b>authorize</b>
-							    </a>
+						
 								<p>
-									To learn more about Lowden Clear, log in to our Dee Zaster App using your Facebook account.
+									As Dee’s mentor, Lowden Clear is a sturdy and dauntless pillar of authority. Since he is the one who sent Dee on this ambitious mission, he feels 100% responsible for her safety. So don’t even think about tugging Dee’s hair, for he will snarl and pounce on you like a grizzly bear bathed with vengeance. Do you copy LOUD & CLEAR?
 								</p>
 							</div>
 						</div>
@@ -516,17 +558,18 @@
 				<!-- Character 4 -->
 				<div class="section character-4">
 					<div class="character-socket">
-						
-						<img class="character-image" src="images/char-4.png" />
+
+						<img class="character-image" src="images/char-1.png" />
 
 						<div class="character-name">
-							Luna Trick
+							Theresa Green
 						</div>
 						
 						<div class="character-text">
 							<div class="character-desc">
 								<div class="title">
 									And my new friends <br> will help me, too.
+
 								</div>
 								<p>
 									I will meet awesome (and weird) folks who will support me in incredible ways.
@@ -541,7 +584,7 @@
 								    <b>authorize</b>
 							    </a>
 								<p>
-									To learn more about Luna Trick, log in to our Dee Zaster App using your Facebook account.
+									To learn more about Theresa Green, log in to our Dee Zaster App using your Facebook account.
 								</p>
 							</div>
 						</div>
@@ -552,7 +595,7 @@
 				<!-- Character 5 -->
 				<div class="section character-5">
 					<div class="character-socket">
-					
+
 						<img class="character-image" src="images/char-5.png" />
 
 						<div class="character-name">
@@ -572,7 +615,7 @@
 							<div class="authorize-block">
 								<a class="btn-authorize" href="">
 								    <span class="btn-circle">
-								    	<img src="images/ico-fb.png" alt="">
+								    	<img width="12" src="images/ico-fb.svg" alt="">
 								    </span>
 								    <b>authorize</b>
 							    </a>
@@ -585,7 +628,6 @@
 					</div>
 				</div>
 
-				
 				<!-- Final -->
 				<div class="section section-final">
 					<div class="final-socket">
@@ -621,7 +663,6 @@
 					<div class="map-wrap">
 						<div class="map">
 							
-
 							<div class="map-socket">
 								<div data-index="4" class="monet monet-4">
 									<img src="images/monet-04.png" alt="">
@@ -641,12 +682,19 @@
 							</div>
 
 							<div class="hole-socket">
-								<div class="hole"></div>
+								<div class="hole">
+									<div class="hole-inner"></div>
+								</div>
+
+								<div class="help-block">
+									<div class="help-arrow"></div>
+									<div class="help-text">
+										Feel free <br> to click
+									</div>
+								</div>
 							</div>
 						</div>
 
-
-						
 						<div class="footer">
 							<div class="footer-socket">
 								<div class="footer-text">
@@ -657,9 +705,9 @@
 								</div>
 
 								<div class="tel-block">
-									<a href="" class="download download-1" data-index="1">
+									<a href="https://play.google.com/store/apps/details?id=com.thisisglance.deezaster" class="download download-1" data-index="1">
 										<span class="btn-circle">
-											<img src="images/app-1.png" alt="">
+											<img src="images/app-1.svg" alt="">
 										</span>
 										<span class="download-text">
 											<span>Available on the</span>
@@ -667,18 +715,22 @@
 										</span>
 									</a>
 
-									<a href="" class="download download-2" data-index="2">
+									<a href="https://itunes.apple.com/app/id1317811010" class="download download-2" data-index="2">
 										<span class="btn-circle">
-											<img src="images/app-2.png" alt="">
+											<img src="images/app-2.svg" alt="">
 										</span>
 										<span class="download-text">
 											<span>Available on the</span>
 											<b>Google Play</b>
 										</span>
 									</a>
-
-									<img class="tel tel-1" src="images/tel-1.png" alt="">
-									<img class="tel tel-2" src="images/tel-2.png" alt="">
+									
+									<a href="https://play.google.com/store/apps/details?id=com.thisisglance.deezaster" class="tel-link tel-link-1" data-index="1">	
+										<img class="tel tel-1" src="images/tel-1.png" alt="">
+									</a>
+									<a href="https://itunes.apple.com/app/id1317811010" class="tel-link tel-link-2" data-index="2">
+										<img class="tel tel-2" src="images/tel-2.png" alt="">
+									</a>
 								</div>
 							</div>
 						</div>
@@ -703,15 +755,7 @@
 				<nav class="navigation-char">
 					<ul>
 						<li class="active">
-							<span>Theresa green</span>
-							<i></i>
-
-							<svg class="circle-pie" viewbox="0 0 33.83098862 33.83098862" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-							  <circle class="circle-pie-bor" stroke="#fff" stroke-width="4" stroke-dasharray="100,100" stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431" r="14.91549431" />
-							</svg>
-						</li>
-						<li>
-							<span>Ben Arna</span>
+							<span>Luna <b class="hide-mob">Trick</b></span>
 
 							<i></i>
 
@@ -720,7 +764,7 @@
 							</svg>
 						</li>
 						<li>
-							<span>Lowden Clear </span>
+							<span>Ben <b class="hide-mob">Arna </b></span>
 
 							<i></i>
 
@@ -729,7 +773,7 @@
 							</svg>
 						</li>
 						<li>
-							<span>Luna Trick</span>
+							<span>Lowden <b class="hide-mob">Clear</b> </span>
 
 							<i></i>
 
@@ -738,7 +782,16 @@
 							</svg>
 						</li>
 						<li>
-							<span>Walker Cross</span>
+							<span>Theresa <b class="hide-mob">green</b></span>
+
+							<i></i>
+
+							<svg class="circle-pie" viewbox="0 0 33.83098862 33.83098862" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+							  <circle class="circle-pie-bor" stroke="#fff" stroke-width="4" stroke-dasharray="100,100" stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431" r="14.91549431" />
+							</svg>
+						</li>
+						<li>
+							<span>Walker <b class="hide-mob">Cross</b></span>
 
 							<i></i>
 
@@ -755,6 +808,7 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
 		<!-- Scripts -->
+		<script src="./js/modernizr-custom.js"></script> 
 		<script src="./js/slick.min.js"></script> 
 		<script src="./js/scripts.js"></script> 
 		<script src="./js/explosion.js"></script> 
@@ -762,7 +816,7 @@
 
 		<script>
 			$(function (){
-				if (window.innerWidth < 1025 && window.innerHeight < 1366){
+				if (window.innerWidth < 1025 && window.innerHeight < 940){
 					$(".demo-tabs").slick({
 						centerMode: false,
 						slidesToScroll: 1,
@@ -771,15 +825,27 @@
 
 						responsive: [
 							{
-								breakpoint: 850,
+								breakpoint: 1024,
 								settings: {
-									slidesToShow: 4
+									slidesToShow: 5
 								}
 							},
 							{
 								breakpoint: 767,
 								settings: {
-									slidesToShow: 2
+									slidesToShow: 3
+								}
+							},
+							{
+								breakpoint: 360,
+								settings: {
+									slidesToShow: 5
+								}
+							},
+							{
+								breakpoint: 330,
+								settings: {
+									slidesToShow: 4
 								}
 							}
 						]
@@ -811,13 +877,18 @@
 
 		        let $screen = document.querySelectorAll(".screen-inner");
 
-		        $screen.forEach( (item) => {
+		        $screen.forEach( function(item){
 					item.classList.add("jump");
 
-					setTimeout( () => {
+					setTimeout( function() {
 					   item.classList.remove("jump");	
 					}, 650);
 		        });
+
+		        (function(){
+				    if ( typeof NodeList.prototype.forEach === "function" ) return false;
+				    NodeList.prototype.forEach = Array.prototype.forEach;
+				}());
 		    }
 
 		</script>

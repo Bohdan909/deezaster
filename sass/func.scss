@@ -47,7 +47,7 @@ $mobile-width : 767px;
 }
 
 @mixin land {
-    @media screen and (orientation: landscape){
+    @media (orientation: landscape){
         @content;
     }
 }
@@ -353,15 +353,21 @@ $mobile-width : 767px;
 
 // Animation
 @mixin animation($name, $duration, $func){
-    animation: $name $duration $func;
-    -ms-animation: $name $duration $func;
-    -webkit-animation: $name $duration $func;
+    animation: $name $duration $func forwards;
+    -ms-animation: $name $duration $func forwards;
+    -webkit-animation: $name $duration $func forwards;
 }
 
 @mixin animation-d($name, $duration, $func, $delay){
     animation: $name $duration $func $delay;
     -ms-animation: $name $duration $func $delay;
     -webkit-animation: $name $duration $func $delay;
+}
+
+@mixin origin($val1, $val2){
+    transform-origin: $val1 $val2;
+    -webkit-transform-origin: $val1 $val2;
+    -ms-transform-origin: $val1 $val2;
 }
 
 // Center
@@ -421,6 +427,40 @@ $mobile-width : 767px;
 }
 
 @keyframes fadeOut {
+    0% {
+        opacity: 1;
+        display: block;
+    }
+
+    99% {
+        opacity: 0;
+        display: block;
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+        display: none;
+    }
+
+    1% {
+        opacity: 0;
+        display: block;
+    }
+
+    100% {
+        opacity: 1;
+        display: block;
+    }
+}
+
+@-webkit-keyframes fadeOut {
     0% {
         opacity: 1;
         display: block;

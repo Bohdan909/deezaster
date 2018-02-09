@@ -18,6 +18,7 @@
     
     .logo {
         @extend .trans;
+        @include delay(0.5s);
         position: absolute;
         left: 0;
         top: 60px;
@@ -33,18 +34,20 @@
     }
 
     .person { 
-        @include transition(all, 0.7s, ease-out);
+        @include transition(all, 0.5s, ease-out);
         @include transform(scaleX(0.95) translateX(30px));
+        opacity: 0;
         left: 130px;
         height: 93vh;
         min-height: 480px;
         top: 3vh;
+        z-index: 1;
 
         @include mid {
-            height: 80vh;   
+            height: 78vh;   
             top: 10vh;     
-            left: calc(5vh + 2%);
-            left: -webkit-calc(5vh + 2%);
+            left: calc(5vh + 1%);
+            left: -webkit-calc(3vh + 1%);
 
             @media screen and (max-height: 790px){
                 left: calc(5vh + 5%);
@@ -80,16 +83,13 @@
     }
 
     .text-block {
-        @include transition(all, 0.7s, ease-out);
-        @include transform(translateX(30px));
-        @include delay(0.15s);
         width: 480px;
-        top: 30%;
+        top: 25%;
         right: -25px;
 
         @include mid {
             width: 440px;
-            right: 15px;
+            right: 0;
 
             @media screen and (max-height: 700px){
                 top: 25%;
@@ -106,23 +106,180 @@
             }
         }
     }
+    
+    .title, p, .btn-circle {
+        @include transition(all, 0.6s, ease-out);
+        @include transform(translateX(30px));
+        @include delay(0.2s);
+        opacity: 0;
+    }
 
     .btn-circle {
-        color: #b57c46;
+
+        span {
+            color: #b57c46;
+        }
     }
 
     &.loaded { // LOADED
 
-        .logo {
+        .title, p, .btn-circle {
+            @include transform(translateX(0px));
             opacity: 1;
         }
-        
-        .text-block {
-            @include transform(translateX(0));
+
+        .logo {
+            opacity: 1;
         }
 
         .person { 
             @include transform(scaleX(1) translateX(0));
+            opacity: 1;
+        }
+    }
+}
+
+$dragDelay: 0.7s;
+$drafScale: 0.6;
+
+.dragonfly {
+    @include transform(translate(-30vw, 40vh));
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards; 
+    -ms-animation-fill-mode: forwards; 
+
+    animation-delay: $dragDelay;
+    -webkit-animation-delay: $dragDelay;
+    -ms-animation-delay: $dragDelay;
+
+    .loaded & {
+        @include animation(fly, 2s, linear);
+    }
+
+    @include mid {
+        @include transform(scale($drafScale) translate(-50vw, 40vh));
+    }
+
+    @include mobile {
+        display: none !important;
+    }
+}
+
+@include ie10 {
+
+    .dragonfly {
+        @include transform(translate(0,0));
+        left: -50vw;
+        top: 40vh;
+
+        .loaded & {
+            @include animation(fly-ie, 1.5s, linear);
+        }
+    }
+}
+
+@keyframes fly-ie {
+    0% {
+        opacity: 0;
+        left: -50vw;
+        top: 40vh;
+    }
+    38% {
+        opacity: 1;
+        left: -23vw;
+        top: 30vh;
+    }
+    80% {
+        opacity: 1;
+        left: 10vw;
+        top: 45vh;
+    }
+    100% {
+        opacity: 0;
+        left: 23vw;
+        top: 50vh;
+    }
+}
+
+@keyframes fly {
+    0% {
+        opacity: 0;
+        transform: translate(-50vw, 40vh);
+    }
+    38% {
+        opacity: 1;
+        transform: translate(-23vw, 30vh);
+    }
+    80% {
+        transform: translate(10vw, 45vh);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(23vw, 50vh);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes fly {
+    0% {
+        opacity: 0;
+        transform: translate(-50vw, 40vh);
+    }
+    38% {
+        opacity: 1;
+        transform: translate(-23vw, 30vh);
+    }
+    80% {
+        transform: translate(10vw, 45vh);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(23vw, 50vh);
+        opacity: 0;
+    }
+}
+
+@include mid {
+
+    @keyframes fly {
+        0% {
+            opacity: 0;
+            transform: translate(-50vw, 40vh) scale($drafScale);
+        }
+        38% {
+            opacity: 1;
+            transform: translate(-21vw, 30vh) scale($drafScale);
+        }
+        80% {
+            transform: translate(9vw, 46vh) scale($drafScale);
+            opacity: 1;
+        }
+        100% {
+            transform: translate(21vw, 50vh) scale($drafScale);
+            opacity: 0;
+        }
+    }
+
+    @-webkit-keyframes fly {
+        0% {
+            opacity: 0;
+            transform: translate(-50vw, 40vh) scale($drafScale);
+        }
+        38% {
+            opacity: 1;
+            transform: translate(-21vw, 30vh) scale($drafScale);
+        }
+        80% {
+            transform: translate(9vw, 46vh) scale($drafScale);
+            opacity: 1;
+        }
+        100% {
+            transform: translate(21vw, 50vh) scale($drafScale);
+            opacity: 0;
         }
     }
 }
@@ -138,58 +295,87 @@
         }
 
         .person {
-            width: 450px;
-            top: 330px;
-            left: 90px;
-            height: auto;
+            top: 250px;
             min-height: auto;
-
-            @media (max-width: 500px){
-                width: 370px;
-                left: 45px;
-            }
-
-            @include mobile-min {
-                width: 300px;
-            }
+            width: auto;
+            left: auto;
+            right: 0; 
+            height: 60vh;
         }
 
         .text-block {
-            width: 350px;
-            top: 120px;
+            width: 320px;
+            top: 115px;
             height: calc(100vh - 120px);
             height: -webkit-calc(100vh - 120px);
-            
-            p {
-                margin-bottom: 160px;
-            }
 
-            @include mobile-min {
-                width: 290px;
-
-                .btn-circle {
-                    position: absolute;
-                    bottom: 25px;
-                }
+            .btn-circle {
+                position: absolute;
+                bottom: 25vh;
             }
         }
 
         @include land { // LANDSCAPE
+
+            .logo {
+                display: none;
+            }
             
             .person {
-                right: -10vw;
-                top: 5vh;
-                width: 55vw;
+                right: 5%;
                 left: auto;
             }
 
             .text-block {
+                top: 25px;
                 width: 45vw;
+                height: calc(100vh - 25px);
+                height: -webkit-calc(100vh - 25px);
 
                 .btn-circle {
-                    display: none;
+                    @include scale(0.7);
+                    @include origin(bottom, left);
+                    top: 70px;
+                    left: 240px;
                 }
             }
         }
     }
 }
+
+@media (max-width: 500px){
+
+    .section-top {
+
+        .person {
+            right: -15vw; 
+
+            @include land {
+                right: -3vw;
+            }
+        }
+    }
+}
+
+@include mobile-min {
+
+    .section-top {
+
+        .person {
+            height: 59vh;
+            top: 215px;
+            right: -35px; 
+        }
+
+        .text-block {
+            width: 290px;
+
+            .btn-circle {
+                bottom: 15vh;
+            }
+        }
+    }
+}
+
+
+

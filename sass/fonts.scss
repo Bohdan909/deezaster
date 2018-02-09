@@ -25,7 +25,7 @@ body * { -webkit-font-smoothing: antialiased; text-shadow: 0 1px 0 rgba(0,0,0,0.
     }
 
     @include tablet-only {
-        font-size: 35px;
+        font-size: 38px;
     }
 
     @include mobile {
@@ -41,12 +41,13 @@ body * { -webkit-font-smoothing: antialiased; text-shadow: 0 1px 0 rgba(0,0,0,0.
 
     @include mobile-min {
         font-size: 30px;
-        line-height: 35px;
+        line-height: 40px;
+        margin-bottom: 5px;
     }
 }
 
 a {
-    color: #000;
+    color: #fff;
     
     &:hover {
         text-decoration: none;
@@ -54,8 +55,9 @@ a {
 }
 
 p {
-    margin-bottom: 25px;
-    line-height: 30px;
+    margin-bottom: 18px;
+    line-height: 27px;
+    letter-spacing: 0;
     font-family: $fontMain;
 
     @include mobile {
@@ -69,7 +71,8 @@ p {
 
     @include mobile-min {
         font-size: 12px;
-        line-height: 25px;
+        line-height: 24px;
+        margin-bottom: 10px;
     }
 }
 
